@@ -1,6 +1,6 @@
 # Practice Front 1
 
-###Butterfly :tw-1f41d:
+### Butterfly :tw-1f41d:
 
 This test will assess your knowledge and skills in front-end development using TypeScript, MUI
 components, pnpm, and Storybook. You will be required to create a one-page website that
