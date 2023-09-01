@@ -4,12 +4,15 @@ import { Usuario } from  './components/Usuario';
 function App() {
   return (
     <>
-      <h1>Hola mundo - Ts </h1>
+      <h1>Pokemons App</h1>
       <hr/>
     
-    <Counter />
+    {/* <Counter /> */}
 
-    <Usuario />
+    {/* <Usuario /> */}
+
+    <MediaCard />
+
 
 
     </>
