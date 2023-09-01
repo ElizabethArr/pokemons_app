@@ -12,7 +12,7 @@ export const Usuario = () => {
     const login = () => {
        setUser({
         uid: 'ADC123',
-        name: 'Elizabeth Arroyo Esacandon'
+        name: 'Elizabeth Arroyo Escandon'
 
     });
 
