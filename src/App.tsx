@@ -1,4 +1,5 @@
 import { Counter } from './components/Counter';
+import { MediaCard } from './components/MediaCard';
 import { Usuario } from  './components/Usuario';
 
 function App() {
