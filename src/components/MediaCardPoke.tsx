@@ -24,7 +24,7 @@ function Pokedex() {
     const fetchPokemonData = async () => {
       try {
         const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=10"
+          "https://pokeapi.co/api/v2/pokemon?limit=20"
         ); // Cambia el límite si lo deseas
         const data = response.data.results;
         console.log("response:", response);
@@ -35,8 +35,8 @@ function Pokedex() {
         for (let i = 0; i < data.length; i++) {
           console.log("pokemon:", data[i].url);
           const requestdetail = await axios.get(data[i].url);
-          console.log("detalle", requestdetail.data.sprites.back_shiny);
-          data[i].image = requestdetail.data.sprites.back_shiny;
+          console.log("detalle", requestdetail.data.sprites.other.dream_world.front_default);
+          data[i].image = requestdetail.data.sprites.other.dream_world.front_default;
         }
         console.log("nuevo arreglo", data);
         setPokemonList(data);
@@ -58,7 +58,7 @@ function Pokedex() {
               <CardMedia
                 component="img"
                 alt={pokemon.image}
-                height="140"
+                height="100%"
                 image={pokemon.image} // Reemplaza esto con la URL de tu imagen
               />
               <CardContent>
