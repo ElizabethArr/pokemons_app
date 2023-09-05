@@ -1,5 +1,6 @@
 import { Counter } from './components/Counter';
 import { MediaCard } from './components/MediaCard';
+import MediaCardPoke from './components/MediaCardPoke';
 import { Usuario } from  './components/Usuario';
 
 function App() {
@@ -12,7 +13,9 @@ function App() {
 
     {/* <Usuario /> */}
 
-    <MediaCard />
+    {/* <MediaCard /> */}
+
+    <MediaCardPoke />
 
 
 
