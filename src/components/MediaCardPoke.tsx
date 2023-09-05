@@ -1,3 +1,4 @@
+import CardMedia from "@mui/material/CardMedia";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -37,7 +38,7 @@ function Pokedex() {
           console.log("detalle", requestdetail.data.sprites.back_shiny);
           data[i].image = requestdetail.data.sprites.back_shiny;
         }
-        console.log("nuevo arreglo", data );
+        console.log("nuevo arreglo", data);
         setPokemonList(data);
       } catch (error) {
         console.error("Error al consultar los Pokémones:", error);
@@ -54,11 +55,17 @@ function Pokedex() {
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card>
               <CardHeader title={pokemon.name} />
+              <CardMedia
+                component="img"
+                alt={pokemon.image}
+                height="140"
+                image={pokemon.image} // Reemplaza esto con la URL de tu imagen
+              />
               <CardContent>
                 <Typography variant="body2" color="textSecondary">
                   Número: {index + 1}
                 </Typography>
-                image:{pokemon.image}
+                
               </CardContent>
             </Card>
           </Grid>
