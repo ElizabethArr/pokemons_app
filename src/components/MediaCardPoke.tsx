@@ -1,3 +1,4 @@
+import './styles.css'; 
 import CardMedia from "@mui/material/CardMedia";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -53,12 +54,12 @@ function Pokedex() {
       <Grid container spacing={3}>
         {pokemonList.map((pokemon, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card>
+            <Card className="card">
               <CardHeader title={pokemon.name} />
               <CardMedia
                 component="img"
                 alt={pokemon.image}
-                height="100%"
+                className="card-image"
                 image={pokemon.image} // Reemplaza esto con la URL de tu imagen
               />
               <CardContent>
