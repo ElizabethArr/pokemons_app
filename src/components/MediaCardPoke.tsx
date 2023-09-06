@@ -90,7 +90,7 @@ function Pokedex() {
                   {/* <Typography variant="body2" color="textSecondary">
                     Types: {pokemon.types[0].type.name}
                   </Typography> */}
-                  <div>
+                  <div className="red">
                     Types:{pokemon.types.map((item, i) => (
                       <div key={i}>{item.type.name}</div>
                     ))}
