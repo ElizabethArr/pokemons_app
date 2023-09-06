@@ -3,6 +3,7 @@ import CardMedia from "@mui/material/CardMedia";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
+  Box,
   Card,
   CardContent,
   CardHeader,
@@ -55,19 +56,28 @@ function Pokedex() {
         {pokemonList.map((pokemon, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card className="card">
-              <CardHeader title={pokemon.name} />
-              <CardMedia
-                component="img"
-                alt={pokemon.image}
-                className="card-image"
-                image={pokemon.image} // Reemplaza esto con la URL de tu imagen
-              />
-              <CardContent>
-                <Typography variant="body2" color="textSecondary">
-                  Número: {index + 1}
-                </Typography>
-                
-              </CardContent>
+             <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%", // Ensure the Box takes up full height
+                }}
+              >
+                <CardHeader title={pokemon.name} />
+                <CardMedia
+                  component="img"
+                  alt={pokemon.image}
+                  image={pokemon.image} // Reemplaza esto con la URL de tu imagen
+                  sx={{ width: "70%", height: 200 }}
+                />
+                <CardContent>
+                  <Typography variant="body2" color="textSecondary">
+                    Número: {index + 1}
+                  </Typography>
+                </CardContent>
+              </Box>
             </Card>
           </Grid>
         ))}
