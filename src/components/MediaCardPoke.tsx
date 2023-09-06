@@ -1,4 +1,4 @@
-import './styles.css'; 
+import "./styles.css";
 import CardMedia from "@mui/material/CardMedia";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -11,7 +11,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { types } from 'util';
+import { types } from "util";
 
 interface Pokemon {
   name: string;
@@ -39,15 +39,19 @@ function Pokedex() {
         for (let i = 0; i < data.length; i++) {
           console.log("pokemon:", data[i].url);
           const requestdetail = await axios.get(data[i].url);
-          console.log("detalle", requestdetail.data.sprites.other.dream_world.front_default);
-          data[i].image = requestdetail.data.sprites.other.dream_world.front_default; 
+          console.log(
+            "detalle",
+            requestdetail.data.sprites.other.dream_world.front_default
+          );
+          data[i].image =
+            requestdetail.data.sprites.other.dream_world.front_default;
           data[i].types = requestdetail.data.types;
-             
         }
-        console.log("nuevo arreglo", data);
-        console.log("pokemon 5",data[4].types[0].type.name);
-        console.log("pokemon 7",data[6]);
-        console.log("pokemon 9",data[8]);
+        // console.log("nuevo arreglo", data);
+        // console.log("pokemon 5",data[4].types[0].type.name);
+        // console.log("pokemon 7",data[6]);
+        // console.log("pokemon 9",data[8]);
+
         setPokemonList(data);
       } catch (error) {
         console.error("Error al consultar los Pokémones:", error);
@@ -63,7 +67,7 @@ function Pokedex() {
         {pokemonList.map((pokemon, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card className="card">
-             <Box
+              <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -83,9 +87,14 @@ function Pokedex() {
                   <Typography variant="body2" color="textSecondary">
                     Número: {index + 1}
                   </Typography>
-                  <Typography variant="body2" color="textSecondary">
+                  {/* <Typography variant="body2" color="textSecondary">
                     Types: {pokemon.types[0].type.name}
-                  </Typography>
+                  </Typography> */}
+                  <div>
+                    Types:{pokemon.types.map((item, i) => (
+                      <div key={i}>{item.type.name}</div>
+                    ))}
+                  </div>
                 </CardContent>
               </Box>
             </Card>
