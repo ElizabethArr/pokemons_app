@@ -6,6 +6,10 @@
     /* Otros estilos que desees aplicar a todas las tarjetas */
   }
 
+  /* .red div {
+    color: red;
+  } */
+
   .red div {
     background-color: red;
     padding: 5px;
