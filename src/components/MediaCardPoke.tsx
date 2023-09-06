@@ -11,11 +11,13 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import { types } from 'util';
 
 interface Pokemon {
   name: string;
   url: string;
   image: string;
+  types: any[];
 }
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
@@ -38,9 +40,14 @@ function Pokedex() {
           console.log("pokemon:", data[i].url);
           const requestdetail = await axios.get(data[i].url);
           console.log("detalle", requestdetail.data.sprites.other.dream_world.front_default);
-          data[i].image = requestdetail.data.sprites.other.dream_world.front_default;
+          data[i].image = requestdetail.data.sprites.other.dream_world.front_default; 
+          data[i].types = requestdetail.data.types;
+             
         }
         console.log("nuevo arreglo", data);
+        console.log("pokemon 5",data[4].types[0].type.name);
+        console.log("pokemon 7",data[6]);
+        console.log("pokemon 9",data[8]);
         setPokemonList(data);
       } catch (error) {
         console.error("Error al consultar los Pokémones:", error);
@@ -75,6 +82,9 @@ function Pokedex() {
                 <CardContent>
                   <Typography variant="body2" color="textSecondary">
                     Número: {index + 1}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    Types: {pokemon.types[0].type.name}
                   </Typography>
                 </CardContent>
               </Box>
