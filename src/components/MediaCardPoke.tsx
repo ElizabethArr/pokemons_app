@@ -11,8 +11,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import { types } from "util";
-import { ColorLens } from "@mui/icons-material";
+
 
 interface Pokemon {
   name: string;
@@ -24,7 +23,7 @@ function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
   // hacer el arreglo
-  const ColorTypes = [
+  const colorTypes = [
     { type: "normal", color: "#a46083" },
     { type: "fighting", color: "#ec8255" },
     { type: "flying", color: "#599b9b" },
@@ -52,10 +51,7 @@ function Pokedex() {
   useEffect(() => {
     // console.log("consultando pokemones...");
     fetchPokemonData();
-    //mandar a llamar la funcion
-    var color = getColor('grass');
-    // console.log('color:--------',color);
-  }, []);
+    }, []);
 
   // Función para realizar la consulta a la API de Pokémon
   const fetchPokemonData = async () => {
@@ -92,7 +88,15 @@ function Pokedex() {
     }
   };
   const getColor = (type:string) => {
-    return '#009000'
+    const colorType = colorTypes.find((item) => item.type === type);
+    if(colorType) {
+      return colorType.color
+    }else{
+      return '#808080'
+    }
+    
+    
+    
   }
   return (
     <Container>
@@ -120,13 +124,10 @@ function Pokedex() {
                   <Typography variant="body2" color="textSecondary">
                     Número: {index + 1}
                   </Typography>
-                  {/* <Typography variant="body2" color="textSecondary">
-                    Types: {pokemon.types[0].type.name}
-                  </Typography> */}
                   <div >
                     Types:
                     {pokemon.types.map((item, i) => (
-                      <div className='type' style={{background:getColor('grass')}} key={i}>{item.type.name}</div>
+                      <div className='type' style={{background:getColor(item.type.name)}} key={i}>{item.type.name}</div>
                     ))}
                   </div>
                 </CardContent>
