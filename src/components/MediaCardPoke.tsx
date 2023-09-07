@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { types } from "util";
+import { ColorLens } from "@mui/icons-material";
 
 interface Pokemon {
   name: string;
@@ -22,45 +23,77 @@ interface Pokemon {
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
+  // hacer el arreglo
+  const ColorTypes = [
+    { type: "normal", color: "#a46083" },
+    { type: "fighting", color: "#ec8255" },
+    { type: "flying", color: "#599b9b" },
+    { type: "poison", color: "#9666c7" },
+    { type: "ground", color: "#b88047" },
+    { type: "rock", color: "#7c4d1d" },
+    { type: "bug", color: "#135313" },
+    { type: "ghost", color: "#4a4a8c" },
+    { type: "steel", color: "#04e7ae" },
+    { type: "fire", color: "#cc0000" },
+    { type: "water", color: "#4daeef" },
+    { type: "grass", color: "#2cc92c" },
+    { type: "electric", color: "#ffff52" },
+    { type: "psychic", color: "#ea348f" },
+    { type: "ice", color: "#c8f9f9" },
+    { type: "dragon", color: "#44caca" },
+    { type: "dark", color: "#57616b" },
+    { type: "fairy", color: "#c11069" },
+    { type: "shadow", color: "#8f45d9" },
+  ];
+
+  // console.log(ColorTypes[0]);
+  // console.log(ColorTypes[5]);
+
   useEffect(() => {
-    console.log("consultando pokemones...");
-    // Función para realizar la consulta a la API de Pokémon
-    const fetchPokemonData = async () => {
-      try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=20"
-        ); // Cambia el límite si lo deseas
-        const data = response.data.results;
-        console.log("response:", response);
-        console.log(data.length);
-        console.log("pokemon 2---->", data[2]);
-        console.log(data); // Muestra los resultados en la consola
-
-        for (let i = 0; i < data.length; i++) {
-          console.log("pokemon:", data[i].url);
-          const requestdetail = await axios.get(data[i].url);
-          console.log(
-            "detalle",
-            requestdetail.data.sprites.other.dream_world.front_default
-          );
-          data[i].image =
-            requestdetail.data.sprites.other.dream_world.front_default;
-          data[i].types = requestdetail.data.types;
-        }
-        // console.log("nuevo arreglo", data);
-        // console.log("pokemon 5",data[4].types[0].type.name);
-        // console.log("pokemon 7",data[6]);
-        // console.log("pokemon 9",data[8]);
-
-        setPokemonList(data);
-      } catch (error) {
-        console.error("Error al consultar los Pokémones:", error);
-      }
-    };
-
+    // console.log("consultando pokemones...");
     fetchPokemonData();
+    //mandar a llamar la funcion
+    var color = getColor('grass');
+    // console.log('color:--------',color);
   }, []);
 
+  // Función para realizar la consulta a la API de Pokémon
+  const fetchPokemonData = async () => {
+    try {
+      const response = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon?limit=20"
+      ); // Cambia el límite si lo deseas
+      const data = response.data.results;
+      // console.log("response:", response);
+      // console.log(data.length);
+      // console.log("pokemon 2---->", data[2]);
+      // console.log(data); // Muestra los resultados en la consola
+
+      for (let i = 0; i < data.length; i++) {
+       // console.log("pokemon:", data[i].url);
+        const requestdetail = await axios.get(data[i].url);
+        // console.log(
+        //   "detalle",
+        //   requestdetail.data.sprites.other.dream_world.front_default
+        // );
+        data[i].image =
+          requestdetail.data.sprites.other.dream_world.front_default;
+        data[i].types = requestdetail.data.types;
+      }
+
+      // console.log("nuevo arreglo", data);
+      // console.log("pokemon 5",data[4].types[0].type.name);
+      // console.log("pokemon 7",data[6]);
+      // console.log("pokemon 9",data[8]);
+
+      setPokemonList(data);
+    } catch (error) {
+      console.error("Error al consultar los Pokémones:", error);
+    }
+  };
+  const getColor = (type:string) => {
+    return '#009000'
+  }
   return (
     <Container>
       <Grid container spacing={3}>
@@ -90,9 +123,10 @@ function Pokedex() {
                   {/* <Typography variant="body2" color="textSecondary">
                     Types: {pokemon.types[0].type.name}
                   </Typography> */}
-                  <div className="red">
-                    Types:{pokemon.types.map((item, i) => (
-                      <div key={i}>{item.type.name}</div>
+                  <div >
+                    Types:
+                    {pokemon.types.map((item, i) => (
+                      <div className='type' style={{background:getColor('grass')}} key={i}>{item.type.name}</div>
                     ))}
                   </div>
                 </CardContent>
