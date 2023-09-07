@@ -66,8 +66,8 @@ function Pokedex() {
       // console.log(data); // Muestra los resultados en la consola
 
       for (let i = 0; i < data.length; i++) {
-       // console.log("pokemon:", data[i].url);
-        const requestdetail = await axios.get(data[i].url);
+       //console.log("pokemon:", data[i].url);
+        const requestdetail = await axios.get(data[i].url); 
         // console.log(
         //   "detalle",
         //   requestdetail.data.sprites.other.dream_world.front_default
@@ -122,7 +122,7 @@ function Pokedex() {
                 />
                 <CardContent>
                   <Typography variant="body2" color="textSecondary">
-                    Número: {index + 1}
+                    Number: {index + 1}
                   </Typography>
                   <div >
                     Types:
