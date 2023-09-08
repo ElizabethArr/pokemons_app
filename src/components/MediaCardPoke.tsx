@@ -1,5 +1,4 @@
 import "./styles.css";
-import CardMedia from "@mui/material/CardMedia";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -7,11 +6,12 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CardMedia,
   Container,
   Grid,
   Typography,
 } from "@mui/material";
-
+import { TypeSelect } from "./TypeSelect";
 
 interface Pokemon {
   name: string;
@@ -19,11 +19,18 @@ interface Pokemon {
   image: string;
   types: any[];
 }
+
+export interface ColorType {
+  type: string;
+  color: string;
+}
+
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
   // hacer el arreglo
-  const colorTypes = [
+  const colorTypes: ColorType[] = [
+    { type: "all", color:""},
     { type: "normal", color: "#a46083" },
     { type: "fighting", color: "#ec8255" },
     { type: "flying", color: "#599b9b" },
@@ -51,7 +58,7 @@ function Pokedex() {
   useEffect(() => {
     // console.log("consultando pokemones...");
     fetchPokemonData();
-    }, []);
+  }, []);
 
   // Función para realizar la consulta a la API de Pokémon
   const fetchPokemonData = async () => {
@@ -66,8 +73,8 @@ function Pokedex() {
       // console.log(data); // Muestra los resultados en la consola
 
       for (let i = 0; i < data.length; i++) {
-       //console.log("pokemon:", data[i].url);
-        const requestdetail = await axios.get(data[i].url); 
+        //console.log("pokemon:", data[i].url);
+        const requestdetail = await axios.get(data[i].url);
         // console.log(
         //   "detalle",
         //   requestdetail.data.sprites.other.dream_world.front_default
@@ -87,19 +94,26 @@ function Pokedex() {
       console.error("Error al consultar los Pokémones:", error);
     }
   };
-  const getColor = (type:string) => {
+  const getColor = (type: string) => {
     const colorType = colorTypes.find((item) => item.type === type);
-    if(colorType) {
-      return colorType.color
-    }else{
-      return '#808080'
+    if (colorType) {
+      return colorType.color;
+    } else {
+      return "#808080";
     }
-    
-    
-    
+  };
+  function getSelectedType(type: string) {
+    console.log("tipo recibido", type);
   }
+
   return (
     <Container>
+      <Grid container spacing={3}>
+        <Grid item xs={4}>
+          <TypeSelect types={colorTypes} onChange={getSelectedType} />
+        </Grid>
+      </Grid>
+      <br />
       <Grid container spacing={3}>
         {pokemonList.map((pokemon, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
@@ -124,10 +138,16 @@ function Pokedex() {
                   <Typography variant="body2" color="textSecondary">
                     Number: {index + 1}
                   </Typography>
-                  <div >
+                  <div>
                     Types:
                     {pokemon.types.map((item, i) => (
-                      <div className='type' style={{background:getColor(item.type.name)}} key={i}>{item.type.name}</div>
+                      <div
+                        className="type"
+                        style={{ background: getColor(item.type.name) }}
+                        key={i}
+                      >
+                        {item.type.name}
+                      </div>
                     ))}
                   </div>
                 </CardContent>
