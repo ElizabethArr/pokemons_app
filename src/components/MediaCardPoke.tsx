@@ -25,6 +25,14 @@ export interface ColorType {
   color: string;
 }
 
+export interface pokemon {
+  type: string;
+  color: string;
+}
+
+
+
+
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
@@ -102,10 +110,35 @@ function Pokedex() {
       return "#808080";
     }
   };
+
+  
+  // //crear funcion filter 
+  // function filter(type: string) {
+  //   console.log('filter',type);
+  //   console.log('pokemonList', pokemonList);
+  //   const filterPokemons = pokemonList.filter((pokemon: Pokemon)) => {
+  //     const pokemonType = pokemon.types.find((item: any) => item.type.name === type);
+  //     return pokemonType;
+  //   };
+  //   console.log('filterPokemons',filterPokemons); 
+  // }
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
+    
+  function filter(type: string) {
+    console.log('filter', type);
+    console.log('pokemonList', pokemonList);
+  
+    // Usaremos filter para encontrar todos los Pokémon que tienen el tipo especificado
+    const filterPokemons = pokemonList.filter((pokemon: Pokemon) => {
+      // Supongo que la propiedad 'type' de 'pokemon' es un array de tipos
+      return pokemon.types.some((item: any) => item.type.name === type);
+    });
+  
+    console.log('filterPokemons', filterPokemons);
   }
-
+}
+  
   return (
     <Container>
       <Grid container spacing={3}>

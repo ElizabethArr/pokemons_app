@@ -8,20 +8,17 @@ function App() {
   return (
     <>
       <h1>Pokemons App</h1>
-      <hr/>
-    
-    {/* <Counter /> */}
+      <hr />
 
-    {/* <Usuario /> */}
+      {/* <Counter /> */}
 
-    {/* <MediaCard /> */}
+      {/* <Usuario /> */}
 
-    <MediaCardPoke />
+      {/* <MediaCard /> */}
 
+      <MediaCardPoke />
 
-    {/* <Frutas /> */}
-
-
+      {/* <Frutas /> */}
 
     </>
   );
