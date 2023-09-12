@@ -12,6 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
+import { NumberSelect } from "./NumberSelect";
+
+
 
 interface Pokemon {
   name: string;
@@ -147,11 +150,18 @@ function Pokedex() {
   
   }
 
+  function SelectedNumber(selectedNumber: number): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
+        </Grid>
+        <Grid item xs={4}>
+        <NumberSelect onChange={ SelectedNumber }/> 
         </Grid>
       </Grid>
       <br />
