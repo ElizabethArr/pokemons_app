@@ -70,7 +70,7 @@ function Pokedex() {
   const fetchPokemonData = async () => {
     try {
       const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=20"
+        "https://pokeapi.co/api/v2/pokemon?limit=60"
       ); // Cambia el límite si lo deseas
       const data = response.data.results;
       // console.log("response:", response);
@@ -122,6 +122,13 @@ function Pokedex() {
   //
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
+    if (type === 'all') {
+      setPokemonList(originalList);
+    } else {
+      pokemonFilter(type);
+    }
+    // aqui va la funcion de filtrar pokemones de acuerdo a su tipo
+
 
     pokemonFilter(type)
   }
