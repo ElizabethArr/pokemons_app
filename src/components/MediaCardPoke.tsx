@@ -30,15 +30,13 @@ export interface pokemon {
   color: string;
 }
 
-
-
-
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [originalList, setOriginalList] = useState<Pokemon[]>([]);
 
   // hacer el arreglo
   const colorTypes: ColorType[] = [
-    { type: "all", color:""},
+    { type: "all", color: "" },
     { type: "normal", color: "#a46083" },
     { type: "fighting", color: "#ec8255" },
     { type: "flying", color: "#599b9b" },
@@ -98,6 +96,7 @@ function Pokedex() {
       // console.log("pokemon 9",data[8]);
 
       setPokemonList(data);
+      setOriginalList(data);
     } catch (error) {
       console.error("Error al consultar los Pokémones:", error);
     }
@@ -111,8 +110,7 @@ function Pokedex() {
     }
   };
 
-  
-  // //crear funcion filter 
+  // //crear funcion filter
   // function filter(type: string) {
   //   console.log('filter',type);
   //   console.log('pokemonList', pokemonList);
@@ -120,25 +118,28 @@ function Pokedex() {
   //     const pokemonType = pokemon.types.find((item: any) => item.type.name === type);
   //     return pokemonType;
   //   };
-  //   console.log('filterPokemons',filterPokemons); 
-  // }
+  //   console.log('filterPokemons',filterPokemons);
+  //
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
-    
-  function filter(type: string) {
-    console.log('filter', type);
-    console.log('pokemonList', pokemonList);
-  
+
+    pokemonFilter(type)
+  }
+
+  function pokemonFilter(type: string) {
+    console.log("filter", type);
+    console.log("originalList", originalList);
     // Usaremos filter para encontrar todos los Pokémon que tienen el tipo especificado
-    const filterPokemons = pokemonList.filter((pokemon: Pokemon) => {
-      // Supongo que la propiedad 'type' de 'pokemon' es un array de tipos
+    const filterPokemons = originalList.filter((pokemon: Pokemon) => {
+      //       // Supongo que la propiedad 'type' de 'pokemon' es un array de tipos
       return pokemon.types.some((item: any) => item.type.name === type);
     });
+
+    console.log("filterPokemons", filterPokemons);
+    setPokemonList(filterPokemons);
   
-    console.log('filterPokemons', filterPokemons);
   }
-}
-  
+
   return (
     <Container>
       <Grid container spacing={3}>
