@@ -66,14 +66,15 @@ function Pokedex() {
 
   useEffect(() => {
     // console.log("consultando pokemones...");
-    fetchPokemonData();
+    fetchPokemonData(1);
   }, []);
 
   // Función para realizar la consulta a la API de Pokémon
-  const fetchPokemonData = async () => {
+  const fetchPokemonData = async ( number:number ) => {
+    console.log("number",number);
     try {
       const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=60"
+        "https://pokeapi.co/api/v2/pokemon?limit="+ number
       ); // Cambia el límite si lo deseas
       const data = response.data.results;
       // console.log("response:", response);
@@ -134,13 +135,16 @@ function Pokedex() {
   }
   
   function getSelectedNumber(number: number) {
-    console.log("numero recibido", number);
+    // console.log("numero recibido", number);
+
+    fetchPokemonData(number); 
+    console.log("number");
   }
 
 
   function pokemonFilter(type: string) {
-    console.log("filter", type);
-    console.log("originalList", originalList);
+    // console.log("filter", type);
+    // console.log("originalList", originalList);
     // Usaremos filter para encontrar todos los Pokémon que tienen el tipo especificado
     const filterPokemons = originalList.filter((pokemon: Pokemon) => {
       //       // Supongo que la propiedad 'type' de 'pokemon' es un array de tipos
