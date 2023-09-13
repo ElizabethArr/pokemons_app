@@ -8,7 +8,7 @@ interface TypeSelectProps {
 }
 
 export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
-  const [selectedType, setSelectedType] = useState("");
+  const [selectedType, setSelectedType] = useState("all");
 
   const handleChange = (event: any) => {
     const selectedType = event.target.value;

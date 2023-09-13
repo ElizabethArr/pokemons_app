@@ -1,19 +1,27 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { styled } from '@mui/material/styles';
 import {
   Box,
+  Button,
   Card,
   CardContent,
   CardHeader,
   CardMedia,
   Container,
   Grid,
+  TextField,
   Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  IconButton,
 } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
-
+import { Modal} from "./Modal";
 
 
 interface Pokemon {
@@ -66,7 +74,7 @@ function Pokedex() {
 
   useEffect(() => {
     // console.log("consultando pokemones...");
-    fetchPokemonData(1);
+    fetchPokemonData(10);
   }, []);
 
   // Función para realizar la consulta a la API de Pokémon
@@ -124,6 +132,8 @@ function Pokedex() {
   //   };
   //   console.log('filterPokemons',filterPokemons);
   //
+
+
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
     if (type === 'all') {
@@ -141,6 +151,9 @@ function Pokedex() {
     console.log("number");
   }
 
+  function handleDialogClose () {
+    // console.log("numero recibido", number);
+  }
 
   function pokemonFilter(type: string) {
     // console.log("filter", type);
@@ -160,6 +173,7 @@ function Pokedex() {
     throw new Error("Function not implemented.");
   }
 
+  
   return (
     <Container>
       <Grid container spacing={3}>
@@ -168,6 +182,9 @@ function Pokedex() {
         </Grid>
         <Grid item xs={4}>
         <NumberSelect onChange={getSelectedNumber}/> 
+        </Grid>
+        <Grid item xs={4}>
+        {/* <Modal/> */}
         </Grid>
       </Grid>
       <br />
@@ -205,8 +222,10 @@ function Pokedex() {
                       >
                         {item.type.name}
                       </div>
+
                     ))}
                   </div>
+                  <Modal/>
                 </CardContent>
               </Box>
             </Card>

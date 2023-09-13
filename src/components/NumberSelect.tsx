@@ -7,15 +7,15 @@ interface NumberSelectProps {
 }
 
 export const NumberSelect = ({ onChange }: NumberSelectProps) => {
-  const [selectedNumber, setSelectedNumber] = useState("");
+  const [selectedNumber, setSelectedNumber] = useState(10);
 
   const numberList:number[]= [10,30,50,100,200]
-  console.log("numberList",numberList);
+//   console.log("numberList",numberList);
 
   const handleChange = (event: any) => {
     const selectedNumber = event.target.value;
-    console.log("event",event); 
-    console.log("SelecNumber", selectedNumber);
+    // console.log("event",event); 
+    // console.log("SelecNumber", selectedNumber);
     setSelectedNumber(selectedNumber);
     onChange(selectedNumber); // Llamar a la función onChange del padre con el valor seleccionado
   };
