@@ -130,11 +130,13 @@ function Pokedex() {
     } else {
       pokemonFilter(type);
     }
-    // aqui va la funcion de filtrar pokemones de acuerdo a su tipo
-
-
-    pokemonFilter(type)
+    
   }
+  
+  function getSelectedNumber(number: number) {
+    console.log("numero recibido", number);
+  }
+
 
   function pokemonFilter(type: string) {
     console.log("filter", type);
@@ -161,7 +163,7 @@ function Pokedex() {
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>
         <Grid item xs={4}>
-        <NumberSelect onChange={ SelectedNumber }/> 
+        <NumberSelect onChange={getSelectedNumber}/> 
         </Grid>
       </Grid>
       <br />
