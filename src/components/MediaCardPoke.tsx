@@ -21,7 +21,7 @@ import {
 } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
-import { Modal} from "./Modal";
+import  Modal from "./Modal";
 
 
 interface Pokemon {
