@@ -116,7 +116,6 @@ function Pokedex() {
     } catch (error) {
       console.error("Error al consultar los Pokémones:", error);
     }
-
   };
   const getColor = (type: string) => {
     const colorType = colorTypes.find((item) => item.type === type);
@@ -128,15 +127,12 @@ function Pokedex() {
   };
 
   const getColorText = (type: string) => {
-    if (type === "electric"|| type === "ice") {
+    if (type === "electric" || type === "ice") {
       return "black";
-    } 
-    else {
+    } else {
       return "white";
     }
   };
-  
-  
 
   // //crear funcion filter
   // function filter(type: string) {
@@ -199,7 +195,7 @@ function Pokedex() {
       <Grid container spacing={3}>
         {pokemonList.map((pokemon, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card className="card">
+            <Card className={`card custom-background`}>
               <Box
                 sx={{
                   display: "flex",
@@ -227,7 +223,7 @@ function Pokedex() {
                           label={item.type.name}
                           variant="outlined"
                           style={{
-                            color: getColorText(item.type.name), 
+                            color: getColorText(item.type.name),
                             background: getColor(item.type.name),
                             margin: "5px", // Añade un margen para separar los Chips
                             flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
