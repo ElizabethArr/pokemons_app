@@ -24,6 +24,7 @@ import {
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { isTemplateExpression } from "typescript";
+import { types } from "util";
 // import Modal from "./Modal";
 
 interface Pokemon {
@@ -115,7 +116,7 @@ function Pokedex() {
     } catch (error) {
       console.error("Error al consultar los Pokémones:", error);
     }
-    
+
   };
   const getColor = (type: string) => {
     const colorType = colorTypes.find((item) => item.type === type);
@@ -125,6 +126,17 @@ function Pokedex() {
       return "#808080";
     }
   };
+
+  const getColorText = (type: string) => {
+    if (type === "electric"|| type === "ice") {
+      return "black";
+    } 
+    else {
+      return "white";
+    }
+  };
+  
+  
 
   // //crear funcion filter
   // function filter(type: string) {
@@ -215,7 +227,7 @@ function Pokedex() {
                           label={item.type.name}
                           variant="outlined"
                           style={{
-                            color: "white",
+                            color: getColorText(item.type.name), 
                             background: getColor(item.type.name),
                             margin: "5px", // Añade un margen para separar los Chips
                             flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
