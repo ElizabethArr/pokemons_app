@@ -115,6 +115,7 @@ function Pokedex() {
     } catch (error) {
       console.error("Error al consultar los Pokémones:", error);
     }
+    
   };
   const getColor = (type: string) => {
     const colorType = colorTypes.find((item) => item.type === type);
