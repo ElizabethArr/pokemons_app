@@ -169,11 +169,7 @@ function Pokedex() {
     setPokemonList(filterPokemons);
   }
 
-  
-
-
   return (
-
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={4}>
@@ -211,31 +207,22 @@ function Pokedex() {
                   <Typography variant="body2" color="textSecondary">
                     Number: {index + 1}
                   </Typography>
-                  <div>
-                    
+                  <div style={{ display: "flex", flexWrap: "wrap" }}>
                     {pokemon.types.map((item, i) => (
-                      // <div
-
-                      //   className="type"
-                      //   style={{ background: getColor(item.type.name) }}
-                      //   key={i}>
-                      //   {item.type.name}
-                      // </div>
-                       
                       <Stack direction="row" spacing={10}>
                         <Chip
                           label={item.type.name}
                           variant="outlined"
-                          
-                          style={{color: "white", background: getColor(item.type.name) }}
+                          style={{
+                            color: "white",
+                            background: getColor(item.type.name),
+                            margin: "5px", // Añade un margen para separar los Chips
+                            flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
+                          }}
                         />
                       </Stack>
-                      
                     ))}
                   </div>
-
-                  {/* <Modal /> */}
-                  
                 </CardContent>
               </Box>
             </Card>
