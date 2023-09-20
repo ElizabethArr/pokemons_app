@@ -169,11 +169,11 @@ function Pokedex() {
     setPokemonList(filterPokemons);
   }
 
-  function SelectedNumber(selectedNumber: number): void {
-    throw new Error("Function not implemented.");
-  }
+  
+
 
   return (
+
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={4}>
@@ -212,6 +212,7 @@ function Pokedex() {
                     Number: {index + 1}
                   </Typography>
                   <div>
+                    
                     {pokemon.types.map((item, i) => (
                       // <div
 
@@ -220,13 +221,21 @@ function Pokedex() {
                       //   key={i}>
                       //   {item.type.name}
                       // </div>
+                       
                       <Stack direction="row" spacing={10}>
-                        <Chip label={item.type.name} variant="outlined"/>
+                        <Chip
+                          label={item.type.name}
+                          variant="outlined"
+                          
+                          style={{color: "white", background: getColor(item.type.name) }}
+                        />
                       </Stack>
+                      
                     ))}
                   </div>
 
                   {/* <Modal /> */}
+                  
                 </CardContent>
               </Box>
             </Card>
