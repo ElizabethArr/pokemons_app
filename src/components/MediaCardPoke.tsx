@@ -1,8 +1,10 @@
 import "./styles.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import {
+  Stack,
+  Chip,
   Box,
   Button,
   Card,
@@ -21,8 +23,8 @@ import {
 } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
-import  Modal from "./Modal";
-
+import { isTemplateExpression } from "typescript";
+// import Modal from "./Modal";
 
 interface Pokemon {
   name: string;
@@ -46,6 +48,7 @@ function Pokedex() {
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
 
   // hacer el arreglo
+
   const colorTypes: ColorType[] = [
     { type: "all", color: "" },
     { type: "normal", color: "#a46083" },
@@ -78,11 +81,11 @@ function Pokedex() {
   }, []);
 
   // Función para realizar la consulta a la API de Pokémon
-  const fetchPokemonData = async ( number:number ) => {
-    console.log("number",number);
+  const fetchPokemonData = async (number: number) => {
+    console.log("number", number);
     try {
       const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit="+ number
+        "https://pokeapi.co/api/v2/pokemon?limit=" + number
       ); // Cambia el límite si lo deseas
       const data = response.data.results;
       // console.log("response:", response);
@@ -133,25 +136,23 @@ function Pokedex() {
   //   console.log('filterPokemons',filterPokemons);
   //
 
-
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
-    if (type === 'all') {
+    if (type === "all") {
       setPokemonList(originalList);
     } else {
       pokemonFilter(type);
     }
-    
   }
-  
+
   function getSelectedNumber(number: number) {
     // console.log("numero recibido", number);
 
-    fetchPokemonData(number); 
+    fetchPokemonData(number);
     console.log("number");
   }
 
-  function handleDialogClose () {
+  function handleDialogClose() {
     // console.log("numero recibido", number);
   }
 
@@ -166,14 +167,12 @@ function Pokedex() {
 
     console.log("filterPokemons", filterPokemons);
     setPokemonList(filterPokemons);
-  
   }
 
   function SelectedNumber(selectedNumber: number): void {
     throw new Error("Function not implemented.");
   }
 
-  
   return (
     <Container>
       <Grid container spacing={3}>
@@ -181,10 +180,10 @@ function Pokedex() {
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>
         <Grid item xs={4}>
-        <NumberSelect onChange={getSelectedNumber}/> 
+          <NumberSelect onChange={getSelectedNumber} />
         </Grid>
         <Grid item xs={4}>
-        {/* <Modal/> */}
+          {/* <Modal/> */}
         </Grid>
       </Grid>
       <br />
@@ -213,19 +212,21 @@ function Pokedex() {
                     Number: {index + 1}
                   </Typography>
                   <div>
-                    Types:
                     {pokemon.types.map((item, i) => (
-                      <div
-                        className="type"
-                        style={{ background: getColor(item.type.name) }}
-                        key={i}
-                      >
-                        {item.type.name}
-                      </div>
+                      // <div
 
+                      //   className="type"
+                      //   style={{ background: getColor(item.type.name) }}
+                      //   key={i}>
+                      //   {item.type.name}
+                      // </div>
+                      <Stack direction="row" spacing={10}>
+                        <Chip label={item.type.name} variant="outlined"/>
+                      </Stack>
                     ))}
                   </div>
-                  <Modal/>
+
+                  {/* <Modal /> */}
                 </CardContent>
               </Box>
             </Card>

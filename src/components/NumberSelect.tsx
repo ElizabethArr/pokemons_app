@@ -9,7 +9,7 @@ interface NumberSelectProps {
 export const NumberSelect = ({ onChange }: NumberSelectProps) => {
   const [selectedNumber, setSelectedNumber] = useState(10);
 
-  const numberList:number[]= [10,30,50,100,200]
+  const numberList:number[]= [10,30,50,100,200,]
 //   console.log("numberList",numberList);
 
   const handleChange = (event: any) => {

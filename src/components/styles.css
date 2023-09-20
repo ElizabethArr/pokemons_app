@@ -6,15 +6,13 @@
     /* Otros estilos que desees aplicar a todas las tarjetas */
   }
 
-  /* .red div {
-    color: red;
-  } */
-
   .type {
     padding: 5px;
     margin: 5px;
     color: white; /* Opcional: Cambiar el color del texto a blanco para que sea legible en el fondo rojo */
   }
+
+  
   
   
   

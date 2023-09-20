@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select, MenuItem, FormControl, InputLabel, Box } from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel, Box, Stack,Chip } from "@mui/material";
 import { ColorType } from "./MediaCardPoke";
 
 interface TypeSelectProps {
