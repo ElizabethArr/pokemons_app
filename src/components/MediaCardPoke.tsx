@@ -73,46 +73,61 @@ function Pokedex() {
     { type: "shadow", color: "#8f45d9" },
   ];
 
-  // console.log(ColorTypes[0]);
-  // console.log(ColorTypes[5]);
-
   useEffect(() => {
-    // console.log("consultando pokemones...");
     fetchPokemonData(10);
   }, []);
 
-  // Función para realizar la consulta a la API de Pokémon
-  const fetchPokemonData = async (number: number) => {
-    console.log("number", number);
-    try {
-      const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=" + number
-      ); // Cambia el límite si lo deseas
-      const data = response.data.results;
-      // console.log("response:", response);
-      // console.log(data.length);
-      // console.log("pokemon 2---->", data[2]);
-      // console.log(data); // Muestra los resultados en la consola
+  const fetchPokemonByType = async (type: string) => {
+    const response = await axios.get(
+      " https://pokeapi.co/api/v2/type/" + type
+    );
+    console.log('response by types: ', response.data.pokemon);
+
+    const data = response.data.pokemon;
+
 
       for (let i = 0; i < data.length; i++) {
         //console.log("pokemon:", data[i].url);
-        const requestdetail = await axios.get(data[i].url);
-        // console.log(
-        //   "detalle",
-        //   requestdetail.data.sprites.other.dream_world.front_default
-        // );
+        const requestdetail = await axios.get(data[i].pokemon.url);
+
+        data[i].name = requestdetail.data.name; 
         data[i].image =
           requestdetail.data.sprites.other.dream_world.front_default;
         data[i].types = requestdetail.data.types;
       }
 
-      // console.log("nuevo arreglo", data);
-      // console.log("pokemon 5",data[4].types[0].type.name);
-      // console.log("pokemon 7",data[6]);
-      // console.log("pokemon 9",data[8]);
+      setPokemonList(data);
+      setOriginalList(data);
+
+    
+  }
+  
+  // Función para realizar la consulta a la API de Pokémon
+  const fetchPokemonData = async (number: number) => {
+    console.log("number", number);
+    try {
+      const response = await axios.get( 
+        "https://pokeapi.co/api/v2/pokemon?limit=" + number  
+      );
+      console.log("response:",response); 
+       
+
+      const data = response.data.results;
+
+
+      for (let i = 0; i < data.length; i++) {
+        //console.log("pokemon:", data[i].url);
+        const requestdetail = await axios.get(data[i].url);
+        
+        data[i].name = requestdetail.data.name;
+        data[i].image =
+          requestdetail.data.sprites.other.dream_world.front_default;
+        data[i].types = requestdetail.data.types;
+      }
 
       setPokemonList(data);
       setOriginalList(data);
+
     } catch (error) {
       console.error("Error al consultar los Pokémones:", error);
     }
@@ -134,23 +149,13 @@ function Pokedex() {
     }
   };
 
-  // //crear funcion filter
-  // function filter(type: string) {
-  //   console.log('filter',type);
-  //   console.log('pokemonList', pokemonList);
-  //   const filterPokemons = pokemonList.filter((pokemon: Pokemon)) => {
-  //     const pokemonType = pokemon.types.find((item: any) => item.type.name === type);
-  //     return pokemonType;
-  //   };
-  //   console.log('filterPokemons',filterPokemons);
-  //
-
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
     if (type === "all") {
       setPokemonList(originalList);
     } else {
-      pokemonFilter(type);
+      // pokemonFilter(type);
+      fetchPokemonByType(type);
     }
   }
 
@@ -166,9 +171,6 @@ function Pokedex() {
   }
 
   function pokemonFilter(type: string) {
-    // console.log("filter", type);
-    // console.log("originalList", originalList);
-    // Usaremos filter para encontrar todos los Pokémon que tienen el tipo especificado
     const filterPokemons = originalList.filter((pokemon: Pokemon) => {
       //       // Supongo que la propiedad 'type' de 'pokemon' es un array de tipos
       return pokemon.types.some((item: any) => item.type.name === type);
