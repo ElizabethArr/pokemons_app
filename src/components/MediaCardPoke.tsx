@@ -20,12 +20,14 @@ import {
   DialogContent,
   DialogActions,
   IconButton,
+  CircularProgress,
 } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { isTemplateExpression } from "typescript";
 import { types } from "util";
 // import Modal from "./Modal";
+
 
 interface Pokemon {
   name: string;
@@ -49,6 +51,7 @@ function Pokedex() {
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
 
   // hacer el arreglo
+  
 
   const colorTypes: ColorType[] = [
     { type: "all", color: "" },
@@ -181,11 +184,16 @@ function Pokedex() {
 
     console.log("filterPokemons", filterPokemons);
     setPokemonList(filterPokemons);
+
+    
   }
 
   return (
     <Container>
       <Grid container spacing={3}>
+      <Grid item xs={4}>
+      <CircularProgress size={80} />;  
+        </Grid>
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>
