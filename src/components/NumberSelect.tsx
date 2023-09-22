@@ -5,7 +5,6 @@ import { Select, MenuItem, FormControl, InputLabel, Box } from "@mui/material";
 interface NumberSelectProps {
   onChange: (selectedNumber: number) => void; // Tipo explícito para "onChange"
 }
-
 export const NumberSelect = ({ onChange }: NumberSelectProps) => {
   const [selectedNumber, setSelectedNumber] = useState(10);
 
@@ -14,8 +13,6 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
 
   const handleChange = (event: any) => {
     const selectedNumber = event.target.value;
-    // console.log("event",event); 
-    // console.log("SelecNumber", selectedNumber);
     setSelectedNumber(selectedNumber);
     onChange(selectedNumber); // Llamar a la función onChange del padre con el valor seleccionado
   };

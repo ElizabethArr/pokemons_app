@@ -152,7 +152,7 @@ function Pokedex() {
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
     if (type === "all") {
-      setPokemonList(originalList);
+      setPokemonList(originalList.slice(0,10-1));
     } else {
       // pokemonFilter(type);
       fetchPokemonByType(type);
@@ -162,8 +162,11 @@ function Pokedex() {
   function getSelectedNumber(number: number) {
     // console.log("numero recibido", number);
 
-    fetchPokemonData(number);
-    console.log("number");
+    // fetchPokemonData(number);
+    // console.log("number");
+    const slicedPokemonList = originalList.slice(0,number);
+    console.log("slicedPokemonList",slicedPokemonList)
+    setPokemonList(originalList.slice(0,number))
   }
 
   function handleDialogClose() {
