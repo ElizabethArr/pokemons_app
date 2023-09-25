@@ -28,7 +28,6 @@ import { isTemplateExpression } from "typescript";
 import { types } from "util";
 // import Modal from "./Modal";
 
-
 interface Pokemon {
   name: string;
   url: string;
@@ -49,9 +48,9 @@ export interface pokemon {
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // hacer el arreglo
-  
 
   const colorTypes: ColorType[] = [
     { type: "all", color: "" },
@@ -81,47 +80,43 @@ function Pokedex() {
   }, []);
 
   const fetchPokemonByType = async (type: string) => {
-    const response = await axios.get(
-      " https://pokeapi.co/api/v2/type/" + type
-    );
-    console.log('response by types: ', response.data.pokemon);
+    setIsLoading(true); // Iniciar la carga
+    const response = await axios.get(" https://pokeapi.co/api/v2/type/" + type);
+    console.log("response by types: ", response.data.pokemon);
 
     const data = response.data.pokemon;
 
+    for (let i = 0; i < data.length; i++) {
+      //console.log("pokemon:", data[i].url);
+      const requestdetail = await axios.get(data[i].pokemon.url);
 
-      for (let i = 0; i < data.length; i++) {
-        //console.log("pokemon:", data[i].url);
-        const requestdetail = await axios.get(data[i].pokemon.url);
+      data[i].name = requestdetail.data.name;
+      data[i].image =
+        requestdetail.data.sprites.other.dream_world.front_default;
+      data[i].types = requestdetail.data.types;
+    }
 
-        data[i].name = requestdetail.data.name; 
-        data[i].image =
-          requestdetail.data.sprites.other.dream_world.front_default;
-        data[i].types = requestdetail.data.types;
-      }
+    setPokemonList(data);
+    setOriginalList(data);
+    setIsLoading(false);
+  };
 
-      setPokemonList(data);
-      setOriginalList(data);
-
-    
-  }
-  
   // Función para realizar la consulta a la API de Pokémon
   const fetchPokemonData = async (number: number) => {
+    setIsLoading(true);
     console.log("number", number);
     try {
-      const response = await axios.get( 
-        "https://pokeapi.co/api/v2/pokemon?limit=" + number  
+      const response = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon?limit=" + number
       );
-      console.log("response:",response); 
-       
+      console.log("response:", response);
 
       const data = response.data.results;
-
 
       for (let i = 0; i < data.length; i++) {
         //console.log("pokemon:", data[i].url);
         const requestdetail = await axios.get(data[i].url);
-        
+
         data[i].name = requestdetail.data.name;
         data[i].image =
           requestdetail.data.sprites.other.dream_world.front_default;
@@ -130,11 +125,16 @@ function Pokedex() {
 
       setPokemonList(data);
       setOriginalList(data);
+      setIsLoading(false);
 
     } catch (error) {
-      console.error("Error al consultar los Pokémones:", error);
+      setIsLoading(false);
+      // console.error("Error al consultar los Pokémones:", error);
+    } finally {
+       setIsLoading(false); // Finalizar la carga (éxito o error)
     }
   };
+
   const getColor = (type: string) => {
     const colorType = colorTypes.find((item) => item.type === type);
     if (colorType) {
@@ -155,7 +155,7 @@ function Pokedex() {
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
     if (type === "all") {
-      setPokemonList(originalList.slice(0,10-1));
+      setPokemonList(originalList.slice(0, 10 - 1));
     } else {
       // pokemonFilter(type);
       fetchPokemonByType(type);
@@ -167,9 +167,9 @@ function Pokedex() {
 
     // fetchPokemonData(number);
     // console.log("number");
-    const slicedPokemonList = originalList.slice(0,number);
-    console.log("slicedPokemonList",slicedPokemonList)
-    setPokemonList(originalList.slice(0,number))
+    const slicedPokemonList = originalList.slice(0, number);
+    console.log("slicedPokemonList", slicedPokemonList);
+    setPokemonList(originalList.slice(0, number));
   }
 
   function handleDialogClose() {
@@ -184,16 +184,21 @@ function Pokedex() {
 
     console.log("filterPokemons", filterPokemons);
     setPokemonList(filterPokemons);
-
-    
   }
 
   return (
     <Container>
+      <div style={{ padding: '20px' }}></div>
       <Grid container spacing={3}>
-      <Grid item xs={4}>
-      <CircularProgress size={80} /> 
-        </Grid>
+        {isLoading ? (
+          <>
+            <h1>Cargando...</h1> <br /> <CircularProgress size={80} />
+          </>
+        ) : (
+          "X"
+        )}
+
+        <Grid item xs={12}></Grid>
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>
