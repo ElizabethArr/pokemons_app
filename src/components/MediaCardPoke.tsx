@@ -26,7 +26,7 @@ import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { isTemplateExpression } from "typescript";
 import { types } from "util";
-// import { ActionAreaCard } from "./ActionAreaCard";
+// import Modal from "./Modal";
 
 
 interface Pokemon {
@@ -192,7 +192,7 @@ function Pokedex() {
     <Container>
       <Grid container spacing={3}>
       <Grid item xs={4}>
-      <CircularProgress size={80} /> 
+      <CircularProgress size={80} />;  
         </Grid>
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
@@ -201,14 +201,14 @@ function Pokedex() {
           <NumberSelect onChange={getSelectedNumber} />
         </Grid>
         <Grid item xs={4}>
-          
+          {/* <Modal/> */}
         </Grid>
       </Grid>
       <br />
       <Grid container spacing={3}>
         {pokemonList.map((pokemon, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card className={`card custom-background`} >
+            <Card className={`card custom-background`}>
               <Box
                 sx={{
                   display: "flex",

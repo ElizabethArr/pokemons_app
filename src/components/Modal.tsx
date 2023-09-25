@@ -18,7 +18,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function ActionAreaCard() {
+export default function Modal() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
