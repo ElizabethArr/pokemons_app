@@ -192,7 +192,7 @@ function Pokedex() {
     <Container>
       <Grid container spacing={3}>
       <Grid item xs={4}>
-      <CircularProgress size={80} />;  
+      <CircularProgress size={80} /> 
         </Grid>
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
