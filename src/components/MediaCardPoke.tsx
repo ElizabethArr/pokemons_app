@@ -154,9 +154,8 @@ function Pokedex() {
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
     if (type === "all") {
-      setPokemonList(originalList.slice(0, 10 - 1));
+      fetchPokemonData(10);
     } else {
-      // pokemonFilter(type);
       fetchPokemonByType(type);
     }
   }
@@ -197,13 +196,27 @@ function Pokedex() {
         </Grid>
       </Grid>
       <br />
-      <Grid container spacing={3}>
-        <Grid item xs={12} className="centered-grid" >
+
+      <Grid item xs={12} className="centered-grid">
         {isLoading ? (
           <>
-            <h1>Cargando...</h1> <br /> <CircularProgress size={80} />
+            <Grid item xs={12} className="centered-grid">
+              <Grid container spacing={4}>
+                <Grid item xs={12}>
+                  <center>
+                    <h1> Cargando...</h1>
+                  </center>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <center>
+                    <CircularProgress size={80} />
+                  </center>
+                </Grid>
+              </Grid>
+            </Grid>
           </>
-         ) : (
+        ) : (
           <Grid container spacing={3}>
             {pokemonList.map((pokemon, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
@@ -251,7 +264,6 @@ function Pokedex() {
             ))}
           </Grid>
         )}
-        </Grid>
       </Grid>
     </Container>
   );

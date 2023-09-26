@@ -17,12 +17,14 @@
   }
 
   .centered-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    min-height: 100vh; /* Esto asegura que el contenedor ocupe al menos toda la altura de la ventana gráfica. */
+  display: flex;
+  flex-direction: column;
+  justify-content: center ;
+  align-items: flex-start;
+  min-height: 100vh;
   }
+
+  
 
   
 

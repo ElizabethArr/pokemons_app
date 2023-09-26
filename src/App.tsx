@@ -7,7 +7,7 @@ import MediaCardPoke from './components/MediaCardPoke';
 function App() {
   return (
     <>
-      <h1>Pokemons App</h1>
+     <center> <h1>Pokemons App</h1></center>
       <hr />
 
       {/* <Counter /> */}
