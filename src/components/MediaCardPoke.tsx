@@ -126,12 +126,11 @@ function Pokedex() {
       setPokemonList(data);
       setOriginalList(data);
       setIsLoading(false);
-
     } catch (error) {
       setIsLoading(false);
       // console.error("Error al consultar los Pokémones:", error);
     } finally {
-       setIsLoading(false); // Finalizar la carga (éxito o error)
+      setIsLoading(false); // Finalizar la carga (éxito o error)
     }
   };
 
@@ -188,73 +187,71 @@ function Pokedex() {
 
   return (
     <Container>
-      <div style={{ padding: '20px' }}></div>
+      <div style={{ padding: "20px" }}></div>
       <Grid container spacing={3}>
-        {isLoading ? (
-          <>
-            <h1>Cargando...</h1> <br /> <CircularProgress size={80} />
-          </>
-        ) : (
-          "X"
-        )}
-
-        <Grid item xs={12}></Grid>
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>
         <Grid item xs={4}>
           <NumberSelect onChange={getSelectedNumber} />
         </Grid>
-        <Grid item xs={4}>
-          {/* <Modal/> */}
-        </Grid>
       </Grid>
       <br />
       <Grid container spacing={3}>
-        {pokemonList.map((pokemon, index) => (
-          <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card className={`card custom-background`}>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: "100%", // Ensure the Box takes up full height
-                }}
-              >
-                <CardHeader title={pokemon.name} />
-                <CardMedia
-                  component="img"
-                  alt={pokemon.image}
-                  image={pokemon.image} // Reemplaza esto con la URL de tu imagen
-                  sx={{ width: "70%", height: 200 }}
-                />
-                <CardContent>
-                  <Typography variant="body2" color="textSecondary">
-                    Number: {index + 1}
-                  </Typography>
-                  <div style={{ display: "flex", flexWrap: "wrap" }}>
-                    {pokemon.types.map((item, i) => (
-                      <Stack direction="row" spacing={10}>
-                        <Chip
-                          label={item.type.name}
-                          variant="outlined"
-                          style={{
-                            color: getColorText(item.type.name),
-                            background: getColor(item.type.name),
-                            margin: "5px", // Añade un margen para separar los Chips
-                            flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
-                          }}
-                        />
-                      </Stack>
-                    ))}
-                  </div>
-                </CardContent>
-              </Box>
-            </Card>
+        <Grid item xs={12} className="centered-grid" >
+        {isLoading ? (
+          <>
+            <h1>Cargando...</h1> <br /> <CircularProgress size={80} />
+          </>
+         ) : (
+          <Grid container spacing={3}>
+            {pokemonList.map((pokemon, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <Card className={`card custom-background`}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: "100%", // Ensure the Box takes up full height
+                    }}
+                  >
+                    <CardHeader title={pokemon.name} />
+                    <CardMedia
+                      component="img"
+                      alt={pokemon.image}
+                      image={pokemon.image} // Reemplaza esto con la URL de tu imagen
+                      sx={{ width: "70%", height: 200 }}
+                    />
+                    <CardContent>
+                      <Typography variant="body2" color="textSecondary">
+                        Number: {index + 1}
+                      </Typography>
+                      <div style={{ display: "flex", flexWrap: "wrap" }}>
+                        {pokemon.types.map((item, i) => (
+                          <Stack direction="row" spacing={10}>
+                            <Chip
+                              label={item.type.name}
+                              variant="outlined"
+                              style={{
+                                color: getColorText(item.type.name),
+                                background: getColor(item.type.name),
+                                margin: "5px", // Añade un margen para separar los Chips
+                                flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
+                              }}
+                            />
+                          </Stack>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Box>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
-        ))}
+        )}
+        </Grid>
       </Grid>
     </Container>
   );
