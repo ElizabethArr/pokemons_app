@@ -230,7 +230,7 @@ function Pokedex() {
                       height: "100%", // Ensure the Box takes up full height
                     }}
                   >
-                    <CardHeader title={pokemon.name} />
+                    <CardHeader title={pokemon.name.charAt(0).toUpperCase()+pokemon.name.slice(1)} />
                     <CardMedia
                       component="img"
                       alt={pokemon.image}
@@ -245,7 +245,7 @@ function Pokedex() {
                         {pokemon.types.map((item, i) => (
                           <Stack direction="row" spacing={10}>
                             <Chip
-                              label={item.type.name}
+                              label={item.type.name.charAt(0).toUpperCase() + item.type.name.slice(1)}
                               variant="outlined"
                               style={{
                                 color: getColorText(item.type.name),
