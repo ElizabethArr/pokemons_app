@@ -24,6 +24,11 @@
   min-height: 100vh;
   }
 
+  body {
+    background-image: url("https://creditoh.com/assets/uploads/2019/03/fondo-blanco.jpg"); 
+    background-size: cover;  
+  }
+
   
 
   

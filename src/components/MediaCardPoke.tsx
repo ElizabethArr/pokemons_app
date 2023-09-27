@@ -26,9 +26,10 @@ import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { isTemplateExpression } from "typescript";
 import { types } from "util";
-// import Modal from "./Modal";
+import { PokemonCard } from "./PokemonCard";
 
-interface Pokemon {
+
+export interface Pokemon {
   name: string;
   url: string;
   image: string;
@@ -40,10 +41,31 @@ export interface ColorType {
   color: string;
 }
 
-export interface pokemon {
-  type: string;
-  color: string;
-}
+ export const colorTypes: ColorType[] = [
+  { type: "all", color: "" },
+  { type: "normal", color: "#a46083" },
+  { type: "fighting", color: "#ec8255" },
+  { type: "flying", color: "#599b9b" },
+  { type: "poison", color: "#9666c7" },
+  { type: "ground", color: "#b88047" },
+  { type: "rock", color: "#7c4d1d" },
+  { type: "bug", color: "#135313" },
+  { type: "ghost", color: "#4a4a8c" },
+  { type: "steel", color: "#04e7ae" },
+  { type: "fire", color: "#cc0000" },
+  { type: "water", color: "#4daeef" },
+  { type: "grass", color: "#2cc92c" },
+  { type: "electric", color: "#ffff52" },
+  { type: "psychic", color: "#ea348f" },
+  { type: "ice", color: "#c8f9f9" },
+  { type: "dragon", color: "#44caca" },
+  { type: "dark", color: "#57616b" },
+  { type: "fairy", color: "#c11069" },
+  { type: "shadow", color: "#8f45d9" },
+];
+
+
+
 
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
@@ -52,28 +74,7 @@ function Pokedex() {
 
   // hacer el arreglo
 
-  const colorTypes: ColorType[] = [
-    { type: "all", color: "" },
-    { type: "normal", color: "#a46083" },
-    { type: "fighting", color: "#ec8255" },
-    { type: "flying", color: "#599b9b" },
-    { type: "poison", color: "#9666c7" },
-    { type: "ground", color: "#b88047" },
-    { type: "rock", color: "#7c4d1d" },
-    { type: "bug", color: "#135313" },
-    { type: "ghost", color: "#4a4a8c" },
-    { type: "steel", color: "#04e7ae" },
-    { type: "fire", color: "#cc0000" },
-    { type: "water", color: "#4daeef" },
-    { type: "grass", color: "#2cc92c" },
-    { type: "electric", color: "#ffff52" },
-    { type: "psychic", color: "#ea348f" },
-    { type: "ice", color: "#c8f9f9" },
-    { type: "dragon", color: "#44caca" },
-    { type: "dark", color: "#57616b" },
-    { type: "fairy", color: "#c11069" },
-    { type: "shadow", color: "#8f45d9" },
-  ];
+   
 
   useEffect(() => {
     fetchPokemonData(10);
@@ -134,22 +135,6 @@ function Pokedex() {
     }
   };
 
-  const getColor = (type: string) => {
-    const colorType = colorTypes.find((item) => item.type === type);
-    if (colorType) {
-      return colorType.color;
-    } else {
-      return "#808080";
-    }
-  };
-
-  const getColorText = (type: string) => {
-    if (type === "electric" || type === "ice") {
-      return "black";
-    } else {
-      return "white";
-    }
-  };
 
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
@@ -220,46 +205,9 @@ function Pokedex() {
           <Grid container spacing={3}>
             {pokemonList.map((pokemon, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <Card className={`card custom-background`}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      height: "100%", // Ensure the Box takes up full height
-                    }}
-                  >
-                    <CardHeader title={pokemon.name.charAt(0).toUpperCase()+pokemon.name.slice(1)} />
-                    <CardMedia
-                      component="img"
-                      alt={pokemon.image}
-                      image={pokemon.image} // Reemplaza esto con la URL de tu imagen
-                      sx={{ width: "70%", height: 200 }}
-                    />
-                    <CardContent>
-                      <Typography variant="body2" color="textSecondary">
-                        Number: {index + 1}
-                      </Typography>
-                      <div style={{ display: "flex", flexWrap: "wrap" }}>
-                        {pokemon.types.map((item, i) => (
-                          <Stack direction="row" spacing={10}>
-                            <Chip
-                              label={item.type.name.charAt(0).toUpperCase() + item.type.name.slice(1)}
-                              variant="outlined"
-                              style={{
-                                color: getColorText(item.type.name),
-                                background: getColor(item.type.name),
-                                margin: "5px", // Añade un margen para separar los Chips
-                                flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
-                              }}
-                            />
-                          </Stack>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Box>
-                </Card>
+                <PokemonCard pokemon={pokemon} index={ index }/> 
+
+                
               </Grid>
             ))}
           </Grid>
