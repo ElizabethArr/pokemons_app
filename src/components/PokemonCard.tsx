@@ -1,4 +1,7 @@
 import { ColorType, Pokemon, colorTypes } from "./MediaCardPoke";
+import { styled } from '@mui/material/styles';
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
+import React, { useState, useEffect } from "react";
 import {
   Stack,
   Chip,
@@ -12,25 +15,37 @@ import {
   Grid,
   TextField,
   Typography,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  IconButton,
-  CircularProgress,
+  CardActions,
+
+  
 } from "@mui/material";
 
 
 interface PokemonCardProps {
   pokemon: Pokemon;
-  index:number;
+  index: number;
+  
+
 }
 
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
+}
+
+const ExpandMore = styled((props: ExpandMoreProps) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
+    duration: theme.transitions.duration.shortest
+  })
+}));
 
 
-export const PokemonCard = ({ pokemon,index }: PokemonCardProps) => {
-
-
+export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
+  const [expanded, setExpanded] = useState(false);
   const getColor = (type: string) => {
     const colorType = colorTypes.find((item) => item.type === type);
     if (colorType) {
@@ -48,9 +63,17 @@ export const PokemonCard = ({ pokemon,index }: PokemonCardProps) => {
     }
   };
 
+  
 
 
+  
 
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+  
+  
 
   return (
     <Card className={`card custom-background`}>
@@ -96,6 +119,17 @@ export const PokemonCard = ({ pokemon,index }: PokemonCardProps) => {
             ))}
           </div>
         </CardContent>
+        <CardActions disableSpacing>
+          <IconButton aria-label="add to favorites"></IconButton>
+          <IconButton aria-label="share"></IconButton>
+          <ExpandMore
+            expand={expanded}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          ></ExpandMore>
+        </CardActions>
+
       </Box>
     </Card>
   );

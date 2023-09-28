@@ -2,32 +2,12 @@ import "./styles.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
-import {
-  Stack,
-  Chip,
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  IconButton,
-  CircularProgress,
-} from "@mui/material";
+import { Container, Grid, CircularProgress } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { isTemplateExpression } from "typescript";
 import { types } from "util";
 import { PokemonCard } from "./PokemonCard";
-
 
 export interface Pokemon {
   name: string;
@@ -41,7 +21,7 @@ export interface ColorType {
   color: string;
 }
 
- export const colorTypes: ColorType[] = [
+export const colorTypes: ColorType[] = [
   { type: "all", color: "" },
   { type: "normal", color: "#a46083" },
   { type: "fighting", color: "#ec8255" },
@@ -64,17 +44,12 @@ export interface ColorType {
   { type: "shadow", color: "#8f45d9" },
 ];
 
-
-
-
 function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // hacer el arreglo
-
-   
 
   useEffect(() => {
     fetchPokemonData(10);
@@ -134,7 +109,6 @@ function Pokedex() {
       setIsLoading(false); // Finalizar la carga (éxito o error)
     }
   };
-
 
   function getSelectedType(type: string) {
     console.log("tipo recibido", type);
@@ -205,9 +179,7 @@ function Pokedex() {
           <Grid container spacing={3}>
             {pokemonList.map((pokemon, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
-                <PokemonCard pokemon={pokemon} index={ index }/> 
-
-                
+                <PokemonCard pokemon={pokemon} index={index} />
               </Grid>
             ))}
           </Grid>
