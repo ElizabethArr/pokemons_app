@@ -1,7 +1,9 @@
 import { ColorType, Pokemon, colorTypes } from "./MediaCardPoke";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import React, { useState, useEffect } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse"; 
 import {
   Stack,
   Chip,
@@ -16,16 +18,11 @@ import {
   TextField,
   Typography,
   CardActions,
-
-  
 } from "@mui/material";
-
 
 interface PokemonCardProps {
   pokemon: Pokemon;
   index: number;
-  
-
 }
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -39,10 +36,9 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
   marginLeft: "auto",
   transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest
-  })
+    duration: theme.transitions.duration.shortest,
+  }),
 }));
-
 
 export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
   const [expanded, setExpanded] = useState(false);
@@ -63,17 +59,9 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
     }
   };
 
-  
-
-
-  
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
-  
-  
 
   return (
     <Card className={`card custom-background`}>
@@ -83,7 +71,7 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          height: "100%", // Ensure the Box takes up full height
+          height: "100%",
         }}
       >
         <CardHeader
@@ -92,7 +80,7 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
         <CardMedia
           component="img"
           alt={pokemon.image}
-          image={pokemon.image} // Reemplaza esto con la URL de tu imagen
+          image={pokemon.image}
           sx={{ width: "70%", height: 200 }}
         />
         <CardContent>
@@ -127,9 +115,23 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
-          ></ExpandMore>
+          >
+            <ExpandMoreIcon />
+          </ExpandMore>
         </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography paragraph>Method:</Typography>
 
+            <Typography paragraph>
+              Add rice and stir very gently to distribute.
+            </Typography>
+
+            <Typography>
+              Set aside off of the heat to let rest for 10 minutes,
+            </Typography>
+          </CardContent>
+        </Collapse>
       </Box>
     </Card>
   );

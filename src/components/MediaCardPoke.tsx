@@ -49,7 +49,7 @@ function Pokedex() {
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // hacer el arreglo
+  
 
   useEffect(() => {
     fetchPokemonData(10);
@@ -90,7 +90,6 @@ function Pokedex() {
       const data = response.data.results;
 
       for (let i = 0; i < data.length; i++) {
-        //console.log("pokemon:", data[i].url);
         const requestdetail = await axios.get(data[i].url);
 
         data[i].name = requestdetail.data.name;
@@ -98,15 +97,14 @@ function Pokedex() {
           requestdetail.data.sprites.other.dream_world.front_default;
         data[i].types = requestdetail.data.types;
       }
-
+      response.data.results.map((result: Pokemon) => console.log("result", result))
       setPokemonList(data);
       setOriginalList(data);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      // console.error("Error al consultar los Pokémones:", error);
     } finally {
-      setIsLoading(false); // Finalizar la carga (éxito o error)
+      setIsLoading(false);
     }
   };
 
@@ -120,22 +118,15 @@ function Pokedex() {
   }
 
   function getSelectedNumber(number: number) {
-    // console.log("numero recibido", number);
-
-    // fetchPokemonData(number);
-    // console.log("number");
     const slicedPokemonList = originalList.slice(0, number);
     console.log("slicedPokemonList", slicedPokemonList);
     setPokemonList(originalList.slice(0, number));
   }
 
-  function handleDialogClose() {
-    // console.log("numero recibido", number);
-  }
+  function handleDialogClose() {}
 
   function pokemonFilter(type: string) {
     const filterPokemons = originalList.filter((pokemon: Pokemon) => {
-      //       // Supongo que la propiedad 'type' de 'pokemon' es un array de tipos
       return pokemon.types.some((item: any) => item.type.name === type);
     });
 
