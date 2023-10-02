@@ -14,6 +14,9 @@ export interface Pokemon {
   url: string;
   image: string;
   types: any[];
+  abilities: any[] ;
+  stats: any [];
+ 
 }
 
 export interface ColorType {
@@ -70,6 +73,10 @@ function Pokedex() {
       data[i].image =
         requestdetail.data.sprites.other.dream_world.front_default;
       data[i].types = requestdetail.data.types;
+      data[i].abilities = requestdetail.data.abilities;
+      data[i].stats = requestdetail.data.stats;
+
+
     }
 
     setPokemonList(data);
@@ -83,6 +90,7 @@ function Pokedex() {
     console.log("number", number);
     try {
       const response = await axios.get(
+
         "https://pokeapi.co/api/v2/pokemon?limit=" + number
       );
       console.log("response:", response);
@@ -96,6 +104,8 @@ function Pokedex() {
         data[i].image =
           requestdetail.data.sprites.other.dream_world.front_default;
         data[i].types = requestdetail.data.types;
+        data[i].abilities = requestdetail.data.abilities;
+        data[i].stats = requestdetail.data.stats;
       }
       response.data.results.map((result: Pokemon) => console.log("result", result))
       setPokemonList(data);

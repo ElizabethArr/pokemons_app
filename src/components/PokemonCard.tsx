@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Collapse from "@mui/material/Collapse"; 
+import Collapse from "@mui/material/Collapse";
 import {
   Stack,
   Chip,
@@ -121,14 +121,22 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Method:</Typography>
-
             <Typography paragraph>
-              Add rice and stir very gently to distribute.
+              <center>Habilidades:</center>
+              {pokemon.abilities.map((item, i) => (
+                <span key={i}> {item.ability.name},</span>
+              ))}
             </Typography>
 
-            <Typography>
-              Set aside off of the heat to let rest for 10 minutes,
+            <Typography paragraph> 
+              <center>Estadisticas:</center>
+              {pokemon.stats.map((item, i) => (
+                <ol><span key={i}> {item.stat.name}:{item.base_stat} 
+                </span></ol>
+              
+               
+              ))}
+
             </Typography>
           </CardContent>
         </Collapse>
