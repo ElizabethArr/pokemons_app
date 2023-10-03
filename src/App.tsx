@@ -1,13 +1,20 @@
 // import { Counter } from './components/Counter';
 // import Frutas from './components/Frutas';
 // import { MediaCard } from './components/MediaCard';
-import MediaCardPoke from './components/MediaCardPoke';
+import MediaCardPoke from "./components/MediaCardPoke";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 // import { Usuario } from  './components/Usuario';
 
 function App() {
   return (
     <>
-     <center> <h1>Pokemons App</h1></center>
+      <center>
+        <Typography variant="h4" gutterBottom>
+          Pokemons App
+        </Typography>
+      </center>
       <hr />
 
       {/* <Counter /> */}
@@ -19,7 +26,6 @@ function App() {
       <MediaCardPoke />
 
       {/* <Frutas /> */}
-
     </>
   );
 }

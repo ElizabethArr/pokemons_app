@@ -1,7 +1,12 @@
 /* styles.css */
 .card {
     /* Establece el tamaño fijo para todas las tarjetas */
+    display: flex;
+    flex-direction: column;
     width: 300px;
+    background-color: #f0f0f0;
+   border: 3px solid #ccc;
+ 
     /* height: 400px; */
     /* Otros estilos que desees aplicar a todas las tarjetas */
   }

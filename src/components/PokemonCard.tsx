@@ -4,6 +4,7 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
+
 import {
   Stack,
   Chip,
@@ -18,6 +19,7 @@ import {
   TextField,
   Typography,
   CardActions,
+  Divider,
 } from "@mui/material";
 
 interface PokemonCardProps {
@@ -75,7 +77,7 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
         }}
       >
         <CardHeader
-          title={pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+        // title={pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
         />
         <CardMedia
           component="img"
@@ -84,9 +86,17 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
           sx={{ width: "70%", height: 200 }}
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary">
-            Number: {index + 1}
-          </Typography>
+          <center>
+            <Typography variant="h5" color="black">
+              {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+            </Typography>
+          </center>
+
+          <center>
+            <Typography variant="body2" color="textSecondary">
+              Number: {index + 1}
+            </Typography>
+          </center>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {pokemon.types.map((item, i) => (
               <Stack direction="row" spacing={10}>
@@ -107,6 +117,7 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
             ))}
           </div>
         </CardContent>
+
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites"></IconButton>
           <IconButton aria-label="share"></IconButton>
@@ -121,22 +132,24 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>
-              <center>Habilidades:</center>
+            {/* <Typography paragraph >
+              
+              <center>Habilidades:
               {pokemon.abilities.map((item, i) => (
                 <span key={i}> {item.ability.name},</span>
-              ))}
-            </Typography>
+              ))}</center>
+            </Typography> */}
 
-            <Typography paragraph> 
+            <Typography paragraph>
               <center>Estadisticas:</center>
               {pokemon.stats.map((item, i) => (
-                <ol><span key={i}> {item.stat.name}:{item.base_stat} 
-                </span></ol>
-              
-               
+                <ol>
+                  <span key={i}>
+                    {" "}
+                    {item.stat.name}:{item.base_stat}
+                  </span>
+                </ol>
               ))}
-
             </Typography>
           </CardContent>
         </Collapse>
