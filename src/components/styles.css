@@ -4,8 +4,8 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    background-color: #f0f0f0;
-   border: 3px solid #ccc;
+    background-color: #cffefe;
+   border: 4px solid #c9f8f9;
  
     /* height: 400px; */
     /* Otros estilos que desees aplicar a todas las tarjetas */
@@ -18,7 +18,7 @@
   }
 
   .custom-background {
-    background: url('https://c.wallhere.com/photos/e3/ab/Pok_mon_red_orange_bright_Cinema_4D_Pok_Balls-51446.jpg!d')
+    background: url('https://i.pinimg.com/564x/43/c9/0a/43c90a452b3cfa7d295ddcb98dd810ff.jpg')
   }
 
   .centered-grid {
@@ -30,7 +30,7 @@
   }
 
   body {
-    background-image: url("https://creditoh.com/assets/uploads/2019/03/fondo-blanco.jpg"); 
+    background-image: url("https://i.pinimg.com/564x/dd/5c/e0/dd5ce04edd4aa402ae26f7f7b715484a.jpg"); 
     background-size: cover;  
   }
 

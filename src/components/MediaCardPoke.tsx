@@ -133,7 +133,6 @@ function Pokedex() {
     setPokemonList(originalList.slice(0, number));
   }
 
-  function handleDialogClose() {}
 
   function pokemonFilter(type: string) {
     const filterPokemons = originalList.filter((pokemon: Pokemon) => {
@@ -146,13 +145,13 @@ function Pokedex() {
 
   return (
     <Container>
-      <div style={{ padding: "20px" }}></div>
-      <Grid container spacing={3}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}></div>
+      <Grid container spacing={2}>
         <Grid item xs={4}>
-          <TypeSelect types={colorTypes} onChange={getSelectedType} />
+         <center> <TypeSelect types={colorTypes} onChange={getSelectedType} /></center>
         </Grid>
         <Grid item xs={4}>
-          <NumberSelect onChange={getSelectedNumber} />
+         <center><NumberSelect onChange={getSelectedNumber} /></center> 
         </Grid>
       </Grid>
       <br />

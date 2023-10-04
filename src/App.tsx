@@ -2,30 +2,35 @@
 // import Frutas from './components/Frutas';
 // import { MediaCard } from './components/MediaCard';
 import MediaCardPoke from "./components/MediaCardPoke";
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 // import { Usuario } from  './components/Usuario';
 
 function App() {
   return (
     <>
-      <center>
-        <Typography variant="h4" gutterBottom>
-          Pokemons App
-        </Typography>
-      </center>
-      <hr />
+      <div>
+       <center>
+          <Typography variant="h5" gutterBottom>
+          <img  src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png" width="300" height="90"/>
+         
+           </Typography>
+           </center>
 
-      {/* <Counter /> */}
+        
+        <hr />
 
-      {/* <Usuario /> */}
+        {/* <Counter /> */}
 
-      {/* <MediaCard /> */}
+        {/* <Usuario /> */}
 
-      <MediaCardPoke />
+        {/* <MediaCard /> */}
 
-      {/* <Frutas /> */}
+        <MediaCardPoke />
+
+        {/* <Frutas /> */}
+      </div>
     </>
   );
 }
