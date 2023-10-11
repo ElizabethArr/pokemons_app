@@ -1,0 +1,53 @@
+
+.data {
+    display: grid;
+    padding: 0 .5rem;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .data .titulo {
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  .titulo-seccion {
+    font-weight: 500;
+  }
+
+  .tag {
+    background-color:rgb(136, 117, 154);
+    color: #0a0606;
+    padding: 4px 6px;
+    margin-right: 5px;
+    border-radius: 100px;
+    text-transform: capitalize;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stats > section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-transform: capitalize;
+  }
+  
+
+  .puntos {
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    background: rgb(136, 117, 154);
+  }
+
+  
+  

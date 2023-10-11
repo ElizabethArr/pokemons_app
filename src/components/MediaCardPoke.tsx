@@ -134,14 +134,14 @@ function Pokedex() {
   }
 
 
-  function pokemonFilter(type: string) {
-    const filterPokemons = originalList.filter((pokemon: Pokemon) => {
-      return pokemon.types.some((item: any) => item.type.name === type);
-    });
+  // function pokemonFilter(type: string) {
+  //   const filterPokemons = originalList.filter((pokemon: Pokemon) => {
+  //     return pokemon.types.some((item: any) => item.type.name === type);
+  //   });
 
-    console.log("filterPokemons", filterPokemons);
-    setPokemonList(filterPokemons);
-  }
+  //   console.log("filterPokemons", filterPokemons);
+  //   setPokemonList(filterPokemons);
+  // }
 
   return (
     <Container>

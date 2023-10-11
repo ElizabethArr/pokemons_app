@@ -4,6 +4,7 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
+ 
 
 import {
   Stack,
@@ -21,26 +22,27 @@ import {
   CardActions,
   Divider,
 } from "@mui/material";
+import MyModal from "./Modal";
 
 interface PokemonCardProps {
   pokemon: Pokemon;
   index: number;
 }
 
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
+//  interface ExpandMoreProps extends IconButtonProps {
+//    expand: boolean;
+//  }
 
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+//  const ExpandMore = styled((props: ExpandMoreProps) => {
+//    const { expand, ...other } = props;
+//    return <IconButton {...other} />;
+//  })(({ theme, expand }) => ({
+//    transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+//    marginLeft: "auto",
+//    transition: theme.transitions.create("transform", {
+//     duration: theme.transitions.duration.shortest,
+//    }),
+//  }));
 
 export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
   const [expanded, setExpanded] = useState(false);
@@ -60,10 +62,12 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
       return "white";
     }
   };
+  
+  
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  //  const handleExpandClick = () => {
+  //    setExpanded(!expanded);
+  //  };
 
   return (
     <Card className={`card custom-background`}>
@@ -117,29 +121,30 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
             ))}
           </div>
         </CardContent>
-
+        <MyModal pokemon={pokemon} />
         <CardActions disableSpacing>
+          
           <IconButton aria-label="add to favorites"></IconButton>
           <IconButton aria-label="share"></IconButton>
-          <ExpandMore
+           {/* <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="show more"
           >
             <ExpandMoreIcon />
-          </ExpandMore>
+          </ExpandMore>  */}
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            {/* <Typography paragraph >
+             <Typography paragraph >
               
               <center>Habilidades:
               {pokemon.abilities.map((item, i) => (
                 <span key={i}> {item.ability.name},</span>
               ))}</center>
-            </Typography> */}
-
+            </Typography> 
+          
             <Typography paragraph>
               <center>Estadisticas:</center>
               {pokemon.stats.map((item, i) => (
