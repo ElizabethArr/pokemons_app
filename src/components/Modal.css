@@ -49,5 +49,15 @@
     background: rgb(136, 117, 154);
   }
 
+  .tage {
+    background-color:rgb(46, 119, 191);
+    color: #0a0606;
+    padding: 4px 6px;
+    margin-right: 5px;
+    border-radius: 100px;
+    text-transform: capitalize;
+    height: 55px;
+    width: 255px;
+  }
   
   

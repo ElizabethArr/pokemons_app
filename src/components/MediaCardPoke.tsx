@@ -146,7 +146,7 @@ function Pokedex() {
   return (
     <Container>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}></div>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} >
         <Grid item xs={4}>
          <center> <TypeSelect types={colorTypes} onChange={getSelectedType} /></center>
         </Grid>

@@ -1,46 +1,37 @@
 /* styles.css */
 .card {
-    /* Establece el tamaño fijo para todas las tarjetas */
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 400px;
-    background-color: #cffefe;
-   border: 4px solid #c9f8f9;
-   
-    /* height: 400px; */
-    /* Otros estilos que desees aplicar a todas las tarjetas */
-  }
-
-  .type {
-    padding: 5px;
-    margin: 5px;
-    color: white; /* Opcional: Cambiar el color del texto a blanco para que sea legible en el fondo rojo */
-  }
-
-  .custom-background {
-    background: url('https://i.pinimg.com/564x/43/c9/0a/43c90a452b3cfa7d295ddcb98dd810ff.jpg')
-  }
-
-  .centered-grid {
+  /* Establece el tamaño fijo para todas las tarjetas */
   display: flex;
   flex-direction: column;
-  justify-content: center ;
+  width: 300px;
+  height: 400px;
+  background-color: #cffefe;
+  border: 4px solid #c9f8f9;
+
+  /* height: 400px; */
+  /* Otros estilos que desees aplicar a todas las tarjetas */
+}
+
+.type {
+  padding: 5px;
+  margin: 5px;
+  color: white; /* Opcional: Cambiar el color del texto a blanco para que sea legible en el fondo rojo */
+}
+
+.custom-background {
+  background: url("https://i.pinimg.com/564x/43/c9/0a/43c90a452b3cfa7d295ddcb98dd810ff.jpg");
+}
+
+.centered-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  }
+}
 
-  body {
-    background-image: url("https://i.pinimg.com/564x/dd/5c/e0/dd5ce04edd4aa402ae26f7f7b715484a.jpg"); 
-    background-size: cover;  
-  }
-
+body {
+  background-image: url("https://i.pinimg.com/564x/dd/5c/e0/dd5ce04edd4aa402ae26f7f7b715484a.jpg");
+  background-size: cover;
   
-
-  
-
-  
-  
-  
-  
-
+}
