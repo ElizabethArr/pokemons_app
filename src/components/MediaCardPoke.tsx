@@ -14,9 +14,8 @@ export interface Pokemon {
   url: string;
   image: string;
   types: any[];
-  abilities: any[] ;
-  stats: any [];
- 
+  abilities: any[];
+  stats: any[];
 }
 
 export interface ColorType {
@@ -52,8 +51,6 @@ function Pokedex() {
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  
-
   useEffect(() => {
     fetchPokemonData(10);
   }, []);
@@ -75,8 +72,6 @@ function Pokedex() {
       data[i].types = requestdetail.data.types;
       data[i].abilities = requestdetail.data.abilities;
       data[i].stats = requestdetail.data.stats;
-
-
     }
 
     setPokemonList(data);
@@ -90,7 +85,6 @@ function Pokedex() {
     console.log("number", number);
     try {
       const response = await axios.get(
-
         "https://pokeapi.co/api/v2/pokemon?limit=" + number
       );
       console.log("response:", response);
@@ -107,7 +101,9 @@ function Pokedex() {
         data[i].abilities = requestdetail.data.abilities;
         data[i].stats = requestdetail.data.stats;
       }
-      response.data.results.map((result: Pokemon) => console.log("result", result))
+      response.data.results.map((result: Pokemon) =>
+        console.log("result", result)
+      );
       setPokemonList(data);
       setOriginalList(data);
       setIsLoading(false);
@@ -133,7 +129,6 @@ function Pokedex() {
     setPokemonList(originalList.slice(0, number));
   }
 
-
   // function pokemonFilter(type: string) {
   //   const filterPokemons = originalList.filter((pokemon: Pokemon) => {
   //     return pokemon.types.some((item: any) => item.type.name === type);
@@ -145,13 +140,24 @@ function Pokedex() {
 
   return (
     <Container>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}></div>
-      <Grid container spacing={2} >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+        }}
+      ></div>
+      <Grid container spacing={2}>
         <Grid item xs={4}>
-         <center> <TypeSelect types={colorTypes} onChange={getSelectedType} /></center>
+          <center>
+            {" "}
+            <TypeSelect types={colorTypes} onChange={getSelectedType} />
+          </center>
         </Grid>
         <Grid item xs={4}>
-         <center><NumberSelect onChange={getSelectedNumber} /></center> 
+          <center>
+            <NumberSelect onChange={getSelectedNumber} />
+          </center>
         </Grid>
       </Grid>
       <br />
