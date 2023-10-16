@@ -21,12 +21,13 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
 
   return (
     <Box>
+      <button className="boton">
       <FormControl
         variant="standard"
         sx={{
-          m: 1.5,
-          minWidth: 310,
-          backgroundColor: "#008B8B",
+          m: 0.4,
+          minWidth: 180,
+          // backgroundColor: "#008B8B",
           borderRadius: "10px",
         }}
       >
@@ -44,6 +45,7 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
           ))}
         </Select>
       </FormControl>
+      </button>
     </Box>
   );
 };
