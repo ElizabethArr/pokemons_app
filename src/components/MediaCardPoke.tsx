@@ -61,8 +61,9 @@ function Pokedex() {
     console.log("response by types: ", response.data.pokemon);
 
     const data = response.data.pokemon;
-
-    for (let i = 0; i < data.length; i++) {
+        
+        //Variable  //Condicion  // Incremento  
+   for (let i = 0; i < data.length; i++) {
       //console.log("pokemon:", data[i].url);
       const requestdetail = await axios.get(data[i].pokemon.url);
 

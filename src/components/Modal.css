@@ -1,22 +1,22 @@
 .data {
   display: grid;
-  padding: 0 .5rem;
-  gap: 10px;
+  padding: 0 .1rem;
+  gap: 5px;
   flex: 1;
 }
 
 .data .titulo {
   margin: 0;
   text-transform: capitalize;
-  font-weight: 200;
+  font-weight: 40;
 }
 
 .titulo-seccion {
-  font-weight: 100;
+  font-weight: 20;
 }
 
 .tag {
-  background-color: lightblue;
+  background-color: #DCDCDC;
   color: #0a0606;
   padding: 4px 6px;
   margin-right: 5px;
@@ -60,7 +60,7 @@
 
 .boton {
   text-decoration: none;
-  font-weight: 200;
+  font-weight: 100;
   font-size: 15px;
   color: #333333;
   padding: 5px 20px;
@@ -73,4 +73,9 @@
 .ButtonStyle {
   position: absolute;
   /* Agrega otros estilos necesarios aquí */
+}
+
+.table{
+  
+  text-transform: capitalize; 
 }
