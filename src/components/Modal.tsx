@@ -9,6 +9,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import CardMedia from "@mui/material/CardMedia";
+import { Grid } from "@mui/material";
 
 const style = {
   position: "absolute" as "absolute",
@@ -46,105 +47,91 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-       >
+      >
         <Box
           sx={{
             ...style,
             textAlign: "left",
-            marginTop: "0.4%",
-            width: "350px",
-            height: "500px",
+            marginTop: "0.2%",
+            width: "300px",
+            height: "510px",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: 'space-between',
-            }}
-          >
+          <Grid item xs={12}>
+            <Button onClick={handleClose} style={{ marginBottom: 0 }}>
+              <CloseIcon style={{ fontSize: "20px" }} />
+            </Button>
+          </Grid>
+
+          <Grid item xs={12}>
             <Typography
               id="modal-modal-title"
               variant="h4"
               component="h2"
-              style={{ fontSize: "20px", margin: 0, lineHeight: 1, 
-              padding: 0, }}
-             >
+              style={{
+                fontSize: "20px",
+                margin: 0,
+                lineHeight: 1,
+                padding: 0,
+              }}
+            >
               <h3>
                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
               </h3>
-              
             </Typography>
-             
-            <CardMedia
-                component="img"
-                alt={pokemon.image}
-                image={pokemon.image}
-                sx={{  width: "20%", // Establece el ancho deseado
-                height: "20%", // Establece la altura deseada
-                margin: 0,
-                padding: 0
-                
-                 }}
-                
-              />
-            <Button onClick={handleClose} style={{ marginBottom: 0 }}>
-              <CloseIcon style={{ fontSize: "20px" }} />
-            </Button>
-          </div>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              <h3 className="titulo-seccion" style={{ margin: 0 }}>
+                Habilidades:
+              </h3>
+              {pokemon.abilities.map((item, i) => (
+                <span className="tag" key={i}>
+                  {item.ability.name}
+                </span>
+              ))}
+            </Typography>
 
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <h3 className="titulo-seccion" style={{ margin: 0 }}>
-              {" "}
-              Habilidades:
-            </h3>
-            {pokemon.abilities.map((item, i) => (
-              <span className="tag" key={i}>
-                {item.ability.name}
-              </span>
-            ))}
-          </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              <h3 className="titulo-seccion" style={{ margin: 0 }}>
+                Estadisticas:
+              </h3>
 
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <h3 className="titulo-seccion" style={{ margin: 0 }}>
-              Estadisticas:
-            </h3>
-
-            <div
-              className="stats"
-              style={{ display: "flex", justifyContent: "center" }}
-            >
-              <TableBody
-                className="table"
-                style={{ width: "68%", backgroundColor: "#DCDCDC" }}
+              <Grid
+                item
+                xs={12}
+                style={{ justifyContent: "center", alignItems: "center" }}
               >
-                {pokemon.stats.map((item, i) => (
-                  <TableRow key={i}>
-                    <TableCell
-                      style={{
-                        width: "50%",
-                        fontSize: "12px",
-                        borderBottom: "2px solid white",
-                      }}
-                    >
-                      {item.stat.name}
-                    </TableCell>
-                    <TableCell
-                      align="right"
-                      style={{
-                        width: "50%",
-                        fontSize: "12px",
-                        borderBottom: "2px solid white",
-                      }}
-                    >
-                      {item.base_stat}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </div>
+                <TableBody
+                  className="table"
+                  style={{ width: "100%", backgroundColor: "#DCDCDC" }}
+                >
+                  {pokemon.stats.map((item, i) => (
+                    <TableRow key={i}>
+                      <TableCell
+                        style={{
+                          width: "100%",
+                          fontSize: "12px",
+                          borderBottom: "2px solid white",
+                        }}
+                      >
+                        {item.stat.name}
+                      </TableCell>
+                      <TableCell
+                        align="right"
+                        style={{
+                          width: "2%",
+                          fontSize: "12px",
+                          borderBottom: "2px solid white",
+                        }}
+                      >
+                        {item.base_stat}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Grid>
+              {/* </div> */}
 
-            {/* <div className="stats">
+              {/* <div className="stats">
               {pokemon.stats.map((item, i) => (
                 <section>
                   <span key={i}>{item.stat.name}</span>
@@ -152,7 +139,8 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
                 </section>
               ))}
             </div>  */}
-          </Typography>
+            </Typography>
+          </Grid>
         </Box>
       </Modal>
     </div>

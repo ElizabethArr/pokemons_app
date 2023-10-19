@@ -27,12 +27,13 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
 
   return (
     <Box>
+      <button>
       <FormControl
         variant="standard"
         sx={{
-          m: 1.5,
-          minWidth: 310,
-          backgroundColor: "#008B8B",
+          m: 0.4,
+          minWidth: 180,
+          
           borderRadius: "10px",
         }}
       >
@@ -50,6 +51,7 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
           ))}
         </Select>
       </FormControl>
+      </button> 
     </Box>
   );
 };

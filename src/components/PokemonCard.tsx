@@ -4,7 +4,6 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
- 
 
 import {
   Stack,
@@ -62,12 +61,6 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
       return "white";
     }
   };
-  
-  
-
-  //  const handleExpandClick = () => {
-  //    setExpanded(!expanded);
-  //  };
 
   return (
     <Card className={`card custom-background`}>
@@ -123,28 +116,20 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
         </CardContent>
         <MyModal pokemon={pokemon} />
         <CardActions disableSpacing>
-          
           <IconButton aria-label="add to favorites"></IconButton>
           <IconButton aria-label="share"></IconButton>
-           {/* <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>  */}
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-             <Typography paragraph >
-              
-              <center>Habilidades:
-              {pokemon.abilities.map((item, i) => (
-                <span key={i}> {item.ability.name},</span>
-              ))}</center>
-            </Typography> 
-          
+            <Typography paragraph>
+              <center>
+                Habilidades:
+                {pokemon.abilities.map((item, i) => (
+                  <span key={i}> {item.ability.name},</span>
+                ))}
+              </center>
+            </Typography>
+
             <Typography paragraph>
               <center>Estadisticas:</center>
               {pokemon.stats.map((item, i) => (

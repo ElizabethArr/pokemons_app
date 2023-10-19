@@ -61,9 +61,9 @@ function Pokedex() {
     console.log("response by types: ", response.data.pokemon);
 
     const data = response.data.pokemon;
-        
-        //Variable  //Condicion  // Incremento  
-   for (let i = 0; i < data.length; i++) {
+
+    //Variable  //Condicion  // Incremento
+    for (let i = 0; i < data.length; i++) {
       //console.log("pokemon:", data[i].url);
       const requestdetail = await axios.get(data[i].pokemon.url);
 
@@ -130,39 +130,17 @@ function Pokedex() {
     setPokemonList(originalList.slice(0, number));
   }
 
-  // function pokemonFilter(type: string) {
-  //   const filterPokemons = originalList.filter((pokemon: Pokemon) => {
-  //     return pokemon.types.some((item: any) => item.type.name === type);
-  //   });
-
-  //   console.log("filterPokemons", filterPokemons);
-  //   setPokemonList(filterPokemons);
-  // }
-
   return (
     <Container>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-        }}
-      ></div>
-      <Grid container spacing={2}>
+      <Grid container spacing={12} alignItems="flex-start">
         <Grid item xs={4}>
-          <center>
-            {" "}
-            <TypeSelect types={colorTypes} onChange={getSelectedType} />
-          </center>
+          <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>
         <Grid item xs={4}>
-          <center>
-            <NumberSelect onChange={getSelectedNumber} />
-          </center>
+          <NumberSelect onChange={getSelectedNumber} />
         </Grid>
       </Grid>
       <br />
-
       <Grid item xs={12} className="centered-grid">
         {isLoading ? (
           <>
@@ -173,7 +151,6 @@ function Pokedex() {
                     <h1> Cargando...</h1>
                   </center>
                 </Grid>
-
                 <Grid item xs={12}>
                   <center>
                     <CircularProgress size={80} />

@@ -21,13 +21,13 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
 
   return (
     <Box>
-      <button className="boton">
+      <button >
       <FormControl
         variant="standard"
         sx={{
           m: 0.4,
           minWidth: 180,
-          // backgroundColor: "#008B8B",
+          
           borderRadius: "10px",
         }}
       >

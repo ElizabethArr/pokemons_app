@@ -18,9 +18,6 @@
   color: white; /* Opcional: Cambiar el color del texto a blanco para que sea legible en el fondo rojo */
 }
 
-.custom-background {
-  background: url("https://i.pinimg.com/564x/43/c9/0a/43c90a452b3cfa7d295ddcb98dd810ff.jpg");
-}
 
 .centered-grid {
   display: flex;

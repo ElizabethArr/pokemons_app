@@ -3,6 +3,7 @@
   padding: 0 .1rem;
   gap: 5px;
   flex: 1;
+ 
 }
 
 .data .titulo {
@@ -12,7 +13,7 @@
 }
 
 .titulo-seccion {
-  font-weight: 20;
+  font-weight: 18;
 }
 
 .tag {
@@ -35,6 +36,7 @@
   align-items: center;
   flex-direction:  column-reverse;
   text-transform: capitalize;
+  
 }
 
 .puntos {
@@ -64,10 +66,9 @@
   font-size: 15px;
   color: #333333;
   padding: 5px 20px;
-  background-color: #d8dfee;
-  border: 2px solid #4058cc;
+  background-color: #cfd6e3;
+  border: 2px solid #b3b4bb;
   border-radius: 35px;
-  margin-left: auto;
 }
 
 .ButtonStyle {
@@ -78,4 +79,6 @@
 .table{
   
   text-transform: capitalize; 
+  width: "100%";
+  
 }
