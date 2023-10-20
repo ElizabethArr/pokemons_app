@@ -75,6 +75,7 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
       >
         <CardHeader
         // title={pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+        
         />
         <CardMedia
           component="img"
@@ -90,13 +91,14 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
           </center>
 
           <center>
-            <Typography variant="body2" color="textSecondary">
-              Number: {index + 1}
+            <Typography variant="h6" color="black">
+              (# {pokemon.held_items})
             </Typography>
           </center>
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {pokemon.types.map((item, i) => (
               <Stack direction="row" spacing={10}>
+                <center>
                 <Chip
                   label={
                     item.type.name.charAt(0).toUpperCase() +
@@ -110,6 +112,7 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
                     flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
                   }}
                 />
+                </center>
               </Stack>
             ))}
           </div>

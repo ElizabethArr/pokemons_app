@@ -16,6 +16,7 @@ export interface Pokemon {
   types: any[];
   abilities: any[];
   stats: any[];
+  held_items: any[];
 }
 
 export interface ColorType {
@@ -73,6 +74,7 @@ function Pokedex() {
       data[i].types = requestdetail.data.types;
       data[i].abilities = requestdetail.data.abilities;
       data[i].stats = requestdetail.data.stats;
+      data[i].held_items = requestdetail.data.id;
     }
 
     setPokemonList(data);
@@ -101,6 +103,7 @@ function Pokedex() {
         data[i].types = requestdetail.data.types;
         data[i].abilities = requestdetail.data.abilities;
         data[i].stats = requestdetail.data.stats;
+        data[i].held_items = requestdetail.data.id;
       }
       response.data.results.map((result: Pokemon) =>
         console.log("result", result)
