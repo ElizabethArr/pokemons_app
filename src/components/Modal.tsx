@@ -89,7 +89,7 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
               </h3>
               {pokemon.abilities.map((item, i) => (
                 <span className="tag" key={i}>
-                  {item.ability.name}
+                  {item.ability.name.charAt(0).toUpperCase() + item.ability.name.slice(1)}
                 </span>
               ))}
             </Typography>
