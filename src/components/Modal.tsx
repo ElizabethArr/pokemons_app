@@ -12,16 +12,18 @@ import CardMedia from "@mui/material/CardMedia";
 import { Grid } from "@mui/material";
 
 const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
+   position: "absolute" as "absolute",
+   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  // position: "absolute",
+  // top: 0,
+  right: 2,
 };
 
 interface Pokemon {
@@ -55,11 +57,13 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
             marginTop: "0.2%",
             width: "300px",
             height: "510px",
+            // backgroundColor: "white", 
+            // padding: "10px",
           }}
         >
           <Grid item xs={12}>
-            <Button onClick={handleClose} style={{ marginBottom: 0 }}>
-              <CloseIcon style={{ fontSize: "20px" }} />
+            <Button onClick={handleClose} style={{ marginBottom: 3, position: "absolute", top: 12, right: 6 }}>
+              <CloseIcon style={{ fontSize: "25px" , color: "black" }} />
             </Button>
           </Grid>
 
@@ -75,9 +79,9 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
                 padding: 0,
               }}
             >
-              <h3>
+              <h2>
                 {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-              </h3>
+              </h2>
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <h3 className="titulo-seccion" style={{ margin: 0 }}>
