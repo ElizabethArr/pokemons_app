@@ -25,15 +25,14 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
       <FormControl
         variant="standard"
         sx={{
-          m: 0.4,
-          minWidth: 180,
-          
-          borderRadius: "10px",
+          m: 0.0,
+          minWidth: 310,
+          borderRadius: "15px",
         }}
       >
         <InputLabel
           id="number"
-          style={{ fontSize: "20px", color: "black", textAlign: "center" }}
+          style={{ fontSize: "18px", color: "black", textAlign: "center" }}
         >
           Show Pokemons
         </InputLabel>

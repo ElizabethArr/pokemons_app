@@ -41,7 +41,7 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
   return (
     <div className="data">
       <Button onClick={handleOpen}>
-        <button className="boton ">Mas Detalle</button>
+        <button className="boton ">Más  Detalle</button>
       </Button>
 
       <Modal
