@@ -135,7 +135,7 @@ function Pokedex() {
 
   return (
     <Container>
-      <Grid container spacing={12} alignItems="flex-start">
+      <Grid container spacing={3} alignItems="center" className="sel" >
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>

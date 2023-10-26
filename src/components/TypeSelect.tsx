@@ -27,13 +27,15 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
 
   return (
     <Box>
-      <button>
+     
       <FormControl
         variant="standard"
         sx={{
           m: 0.0,
           minWidth:310,
           borderRadius: "15px",
+          border: "0.5px solid #000", 
+          backgroundColor: "#FAFAFA",
         }}
       >
         <InputLabel
@@ -42,7 +44,7 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
         >
           Type
         </InputLabel>
-        <Select value={selectedType} onChange={handleChange}>
+        <Select value={selectedType} onChange={handleChange} sx={{ textAlign: 'center' }}>
           {types.map((type, index) => (
             <MenuItem key={index} value={type.type}>
               {type.type}
@@ -50,7 +52,7 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
           ))}
         </Select>
       </FormControl>
-      </button> 
+      
     </Box>
   );
 };

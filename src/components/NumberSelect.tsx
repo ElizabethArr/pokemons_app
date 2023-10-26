@@ -21,13 +21,16 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
 
   return (
     <Box>
-      <button >
+      
       <FormControl
         variant="standard"
         sx={{
           m: 0.0,
           minWidth: 310,
           borderRadius: "15px",
+          border: "0.5px solid #000", 
+          backgroundColor: "#FAFAFA",
+          
         }}
       >
         <InputLabel
@@ -36,7 +39,7 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
         >
           Show Pokemons
         </InputLabel>
-        <Select value={selectedNumber} onChange={handleChange}>
+        <Select value={selectedNumber} onChange={handleChange} sx={{ textAlign: 'center' }}>
           {numberList.map((number, index) => (
             <MenuItem key={index} value={number}>
               {number}
@@ -44,7 +47,7 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
           ))}
         </Select>
       </FormControl>
-      </button>
+     
     </Box>
   );
 };

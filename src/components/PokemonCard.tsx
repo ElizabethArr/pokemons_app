@@ -1,3 +1,4 @@
+import "./styles.css";
 import { ColorType, Pokemon, colorTypes } from "./MediaCardPoke";
 import { styled } from "@mui/material/styles";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
@@ -71,34 +72,50 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
           alignItems: "center",
           justifyContent: "center",
           height: "100%",
+          position: "relative",
         }}
       >
-        <CardHeader
+        <Typography color="black" marginTop={2} style={{ fontSize: "15px" }}>
+          <span
+            className="botonn"
+            style={{
+              position: "absolute", //
+              top: 5, // Ajustar la posición superior según sea necesario
+              right: 5, // Ajustar la posición derecha según sea necesario
+            }}
+          >
+            # {pokemon.held_items}
+          </span>
+        </Typography>
+
+        {/* <CardHeader
         // title={pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
         
-        />
+        /> */}
         <CardMedia
           component="img"
           alt={pokemon.image}
           image={pokemon.image}
-          sx={{ width: "70%", height: 200 }}
+          sx={{ width: "70%", height: 200, margin: "0 auto" }}
         />
         <CardContent>
-          <center>
-            <Typography variant="h5" color="black">
-              {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-            </Typography>
-          </center>
+          <Typography
+            variant="h5"
+            color="black"
+            style={{ textAlign: "center" }}
+          >
+            {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+          </Typography>
 
-          <center>
-            <Typography variant="h6" color="black">
-              (# {pokemon.held_items})
-            </Typography>
-          </center>
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
             {pokemon.types.map((item, i) => (
-              <Stack direction="row" spacing={10}>
-                <center>
+              <Stack direction="row" spacing={10} key={i}>
                 <Chip
                   label={
                     item.type.name.charAt(0).toUpperCase() +
@@ -112,7 +129,6 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
                     flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
                   }}
                 />
-                </center>
               </Stack>
             ))}
           </div>
@@ -124,24 +140,20 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>
-              <center>
-                Habilidades:
-                {pokemon.abilities.map((item, i) => (
-                  <span key={i}> {item.ability.name},</span>
-                ))}
-              </center>
+            <Typography paragraph style={{ textAlign: "center" }}>
+              Habilidades:
+              {pokemon.abilities.map((item, i) => (
+                <span key={i}> {item.ability.name},</span>
+              ))}
             </Typography>
 
-            <Typography paragraph>
-              <center>Estadisticas:</center>
+            <Typography paragraph style={{ textAlign: "center" }}>
+              Estadisticas:
               {pokemon.stats.map((item, i) => (
-                <ol>
-                  <span key={i}>
-                    {" "}
-                    {item.stat.name}:{item.base_stat}
-                  </span>
-                </ol>
+                <span key={i}>
+                  {" "}
+                  {item.stat.name}:{item.base_stat}
+                </span>
               ))}
             </Typography>
           </CardContent>
