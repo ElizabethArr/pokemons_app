@@ -20,26 +20,27 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
   };
 
   return (
-    <Box>
-      
-      <FormControl
-        variant="standard"
-        sx={{
-          m: 0.0,
-          minWidth: 310,
-          borderRadius: "15px",
-          border: "0.5px solid #000", 
-          backgroundColor: "#FAFAFA",
+    <Box sx={{ minWidth: 100 }}>
+      <FormControl fullWidth style={{ backgroundColor: "#eeeeee" }}>
+        {/* //   m: 0.0,
+        //   minWidth: 310,
+        //   borderRadius: "15px",
+        //   border: "0.5px solid #000", 
+        //   backgroundColor: "#FAFAFA",
           
-        }}
-      >
-        <InputLabel
-          id="number"
-          style={{ fontSize: "18px", color: "black", textAlign: "center" }}
-        >
+        // }}
+      > */}
+
+        <InputLabel id="number" style={{ fontSize: "18px", color: "black" }}>
           Show Pokemons
         </InputLabel>
-        <Select value={selectedNumber} onChange={handleChange} sx={{ textAlign: 'center' }}>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={selectedNumber}
+          label="number"
+          onChange={handleChange}
+        >
           {numberList.map((number, index) => (
             <MenuItem key={index} value={number}>
               {number}
@@ -47,7 +48,6 @@ export const NumberSelect = ({ onChange }: NumberSelectProps) => {
           ))}
         </Select>
       </FormControl>
-     
     </Box>
   );
 };

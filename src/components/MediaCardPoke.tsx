@@ -135,7 +135,7 @@ function Pokedex() {
 
   return (
     <Container>
-      <Grid container spacing={3} alignItems="center" className="sel" >
+      <Grid container spacing={3} alignItems="center" className="sel">
         <Grid item xs={4}>
           <TypeSelect types={colorTypes} onChange={getSelectedType} />
         </Grid>
@@ -163,7 +163,7 @@ function Pokedex() {
             </Grid>
           </>
         ) : (
-          <Grid container spacing={3}>
+          <Grid container spacing={3} >
             {pokemonList.map((pokemon, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <PokemonCard pokemon={pokemon} index={index} />

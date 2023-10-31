@@ -1,3 +1,4 @@
+import "./styles.css";
 import React, { useState } from "react";
 import {
   Select,
@@ -26,25 +27,18 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
   };
 
   return (
-    <Box>
-     
-      <FormControl
-        variant="standard"
-        sx={{
-          m: 0.0,
-          minWidth:310,
-          borderRadius: "15px",
-          border: "0.5px solid #000", 
-          backgroundColor: "#FAFAFA",
-        }}
-      >
-        <InputLabel
-          id="type"
-          style={{ fontSize: "18px", color: "black", textAlign: "center" }}
-        >
+    <Box sx={{ minWidth: 100 }}>
+      <FormControl fullWidth style={{ backgroundColor: "#eeeeee" }}>
+        <InputLabel id="type" style={{ fontSize: "18px", color: "black" }}>
           Type
         </InputLabel>
-        <Select value={selectedType} onChange={handleChange} sx={{ textAlign: 'center' }}>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={selectedType}
+          label="Type"
+          onChange={handleChange}
+        >
           {types.map((type, index) => (
             <MenuItem key={index} value={type.type}>
               {type.type}
@@ -52,7 +46,6 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
           ))}
         </Select>
       </FormControl>
-      
     </Box>
   );
 };

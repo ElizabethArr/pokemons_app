@@ -12,8 +12,8 @@ import CardMedia from "@mui/material/CardMedia";
 import { Grid } from "@mui/material";
 
 const style = {
-   position: "absolute" as "absolute",
-   top: "50%",
+  position: "absolute" as "absolute",
+  top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
@@ -21,8 +21,6 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
-  // position: "absolute",
-  // top: 0,
   right: 2,
 };
 
@@ -41,7 +39,7 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
   return (
     <div className="data">
       <Button onClick={handleOpen}>
-        <button className="boton ">Más  Detalle</button>
+        <button className="boton ">More Detail</button>
       </Button>
 
       <Modal
@@ -57,13 +55,20 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
             marginTop: "0.2%",
             width: "300px",
             height: "510px",
-            // backgroundColor: "white", 
-            // padding: "10px",
+            
           }}
         >
           <Grid item xs={12}>
-            <Button onClick={handleClose} style={{ marginBottom: 3, position: "absolute", top: 12, right: 6 }}>
-              <CloseIcon style={{ fontSize: "25px" , color: "black" }} />
+            <Button
+              onClick={handleClose}
+              style={{
+                marginBottom: 3,
+                position: "absolute",
+                top: 12,
+                right: 6,
+              }}
+            >
+              <CloseIcon style={{ fontSize: "25px", color: "black" }} />
             </Button>
           </Grid>
 
@@ -85,18 +90,19 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <h3 className="titulo-seccion" style={{ margin: 0 }}>
-                Habilidades:
+                Skills:
               </h3>
               {pokemon.abilities.map((item, i) => (
                 <span className="tag" key={i}>
-                  {item.ability.name.charAt(0).toUpperCase() + item.ability.name.slice(1)}
+                  {item.ability.name.charAt(0).toUpperCase() +
+                    item.ability.name.slice(1)}
                 </span>
               ))}
             </Typography>
 
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <h3 className="titulo-seccion" style={{ margin: 0 }}>
-                Estadisticas:
+                Stats:
               </h3>
 
               <Grid
