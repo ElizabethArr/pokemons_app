@@ -3,24 +3,17 @@ import { ColorType, Pokemon, colorTypes } from "./MediaCardPoke";
 import { styled } from "@mui/material/styles";
 import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import React, { useState, useEffect } from "react";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 
 import {
   Stack,
   Chip,
   Box,
-  Button,
   Card,
   CardContent,
-  CardHeader,
   CardMedia,
-  Container,
-  Grid,
-  TextField,
   Typography,
   CardActions,
-  Divider,
 } from "@mui/material";
 import MyModal from "./Modal";
 
@@ -28,7 +21,6 @@ interface PokemonCardProps {
   pokemon: Pokemon;
   index: number;
 }
-
 
 export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
   const [expanded, setExpanded] = useState(false);
@@ -65,19 +57,15 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
           <span
             className="botonn"
             style={{
-              position: "absolute", //
-              top: 5, // Ajustar la posición superior según sea necesario
-              right: 5, // Ajustar la posición derecha según sea necesario
+              position: "absolute",
+              top: 5,
+              right: 5,
             }}
           >
             # {pokemon.held_items}
           </span>
         </Typography>
 
-        {/* <CardHeader
-        // title={pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-        
-        /> */}
         <CardMedia
           component="img"
           alt={pokemon.image}
@@ -111,8 +99,8 @@ export const PokemonCard = ({ pokemon, index }: PokemonCardProps) => {
                   style={{
                     color: getColorText(item.type.name),
                     background: getColor(item.type.name),
-                    margin: "5px", // Añade un margen para separar los Chips
-                    flexBasis: "calc(50% - 10px)", // Divide en dos columnas con margen
+                    margin: "5px",
+                    flexBasis: "calc(50% - 10px)",
                   }}
                 />
               </Stack>

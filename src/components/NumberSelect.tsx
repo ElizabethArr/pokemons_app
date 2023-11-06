@@ -2,35 +2,24 @@ import React from "react";
 import { useState } from "react";
 import { Select, MenuItem, FormControl, InputLabel, Box } from "@mui/material";
 import "./Modal.css";
-import { Stack, Chip } from "@mui/material";
 
 interface NumberSelectProps {
-  onChange: (selectedNumber: number) => void; // Tipo explícito para "onChange"
+  onChange: (selectedNumber: number) => void;
 }
 export const NumberSelect = ({ onChange }: NumberSelectProps) => {
   const [selectedNumber, setSelectedNumber] = useState(10);
 
   const numberList: number[] = [10, 30, 50, 100, 200];
-  //   console.log("numberList",numberList);
 
   const handleChange = (event: any) => {
     const selectedNumber = event.target.value;
     setSelectedNumber(selectedNumber);
-    onChange(selectedNumber); // Llamar a la función onChange del padre con el valor seleccionado
+    onChange(selectedNumber);
   };
 
   return (
     <Box sx={{ minWidth: 100 }}>
       <FormControl fullWidth style={{ backgroundColor: "#eeeeee" }}>
-        {/* //   m: 0.0,
-        //   minWidth: 310,
-        //   borderRadius: "15px",
-        //   border: "0.5px solid #000", 
-        //   backgroundColor: "#FAFAFA",
-          
-        // }}
-      > */}
-
         <InputLabel id="number" style={{ fontSize: "18px", color: "black" }}>
           Show Pokemons
         </InputLabel>
