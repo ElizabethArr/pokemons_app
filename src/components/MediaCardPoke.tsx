@@ -58,14 +58,13 @@ function Pokedex() {
 
   const fetchPokemonByType = async (type: string) => {
     setIsLoading(true); // Iniciar la carga
-    const response = await axios.get(" https://pokeapi.co/api/v2/type/" + type);
+    const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
     console.log("response by types: ", response.data.pokemon);
 
     const data = response.data.pokemon;
 
     //Variable  //Condicion  // Incremento
     for (let i = 0; i < data.length; i++) {
-      //console.log("pokemon:", data[i].url);
       const requestdetail = await axios.get(data[i].pokemon.url);
 
       data[i].name = requestdetail.data.name;
@@ -85,13 +84,9 @@ function Pokedex() {
   // Función para realizar la consulta a la API de Pokémon
   const fetchPokemonData = async (number: number) => {
     setIsLoading(true);
-    console.log("number", number);
-    try {
-      const response = await axios.get(
-        "https://pokeapi.co/api/v2/pokemon?limit=" + number
-      );
-      console.log("response:", response);
 
+    try {
+      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=/${number}`);
       const data = response.data.results;
 
       for (let i = 0; i < data.length; i++) {
@@ -163,7 +158,7 @@ function Pokedex() {
             </Grid>
           </>
         ) : (
-          <Grid container spacing={3} >
+          <Grid container spacing={3}>
             {pokemonList.map((pokemon, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <PokemonCard pokemon={pokemon} index={index} />
