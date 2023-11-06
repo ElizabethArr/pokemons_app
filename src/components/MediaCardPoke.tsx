@@ -52,6 +52,8 @@ function Pokedex() {
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+
+
   useEffect(() => {
     fetchPokemonData(10);
   }, []);
