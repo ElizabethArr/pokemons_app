@@ -8,6 +8,7 @@ import { NumberSelect } from "./NumberSelect";
 import { isTemplateExpression } from "typescript";
 import { types } from "util";
 import { PokemonCard } from "./PokemonCard";
+import SkeletonLoading from "./SkeletonLoading";
 
 export interface Pokemon {
   name: string;
@@ -52,20 +53,17 @@ function Pokedex() {
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-
-
   useEffect(() => {
     fetchPokemonData(10);
   }, []);
 
   const fetchPokemonByType = async (type: string) => {
-    setIsLoading(true); // Iniciar la carga
+    setIsLoading(true);
     const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
     console.log("response by types: ", response.data.pokemon);
 
     const data = response.data.pokemon;
 
-    //Variable  //Condicion  // Incremento
     for (let i = 0; i < data.length; i++) {
       const requestdetail = await axios.get(data[i].pokemon.url);
 
@@ -83,12 +81,13 @@ function Pokedex() {
     setIsLoading(false);
   };
 
-  // Función para realizar la consulta a la API de Pokémon
   const fetchPokemonData = async (number: number) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=/${number}`);
+      const response = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon?limit=${number}`
+      );
       const data = response.data.results;
 
       for (let i = 0; i < data.length; i++) {
@@ -143,22 +142,24 @@ function Pokedex() {
       <br />
       <Grid item xs={12} className="centered-grid">
         {isLoading ? (
-          <>
-            <Grid item xs={12} className="centered-grid">
-              <Grid container spacing={4}>
-                <Grid item xs={12}>
-                  <center>
-                    <h1> Cargando...</h1>
-                  </center>
-                </Grid>
-                <Grid item xs={12}>
-                  <center>
-                    <CircularProgress size={80} />
-                  </center>
-                </Grid>
-              </Grid>
-            </Grid>
-          </>
+          <SkeletonLoading/>
+       
+          // <>
+          //   <Grid item xs={12} className="centered-grid">
+          //     <Grid container spacing={4}>
+          //       <Grid item xs={12}>
+          //         <center>
+          //           <h1> Cargando...</h1>
+          //         </center>
+          //       </Grid>
+          //       <Grid item xs={12}>
+          //         <center>
+          //           <CircularProgress size={80} />
+          //         </center>
+          //       </Grid>
+          //     </Grid>
+          //   </Grid>
+          // </>
         ) : (
           <Grid container spacing={3}>
             {pokemonList.map((pokemon, index) => (

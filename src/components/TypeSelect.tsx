@@ -1,19 +1,11 @@
 import "./styles.css";
 import React, { useState } from "react";
-import {
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Box,
-  Stack,
-  Chip,
-} from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel, Box } from "@mui/material";
 import { ColorType } from "./MediaCardPoke";
 
 interface TypeSelectProps {
-  types: ColorType[]; // Tipo explícito para "types"
-  onChange: (selectedType: string) => void; // Tipo explícito para "onChange"
+  types: ColorType[];
+  onChange: (selectedType: string) => void;
 }
 
 export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
@@ -23,7 +15,7 @@ export const TypeSelect = ({ types, onChange }: TypeSelectProps) => {
     const selectedType = event.target.value;
     console.log("SelecType", selectedType);
     setSelectedType(selectedType);
-    onChange(selectedType); // Llamar a la función onChange del padre con el valor seleccionado
+    onChange(selectedType);
   };
 
   return (
