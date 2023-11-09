@@ -2,11 +2,9 @@ import "./styles.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
-import { Container, Grid, CircularProgress } from "@mui/material";
+import { Container, Grid, } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
-import { isTemplateExpression } from "typescript";
-import { types } from "util";
 import { PokemonCard } from "./PokemonCard";
 import SkeletonLoading from "./SkeletonLoading";
 
@@ -60,24 +58,37 @@ function Pokedex() {
   const fetchPokemonByType = async (type: string) => {
     setIsLoading(true);
     const response = await axios.get(`https://pokeapi.co/api/v2/type/${type}`);
-    console.log("response by types: ", response.data.pokemon);
-
     const data = response.data.pokemon;
 
-    for (let i = 0; i < data.length; i++) {
-      const requestdetail = await axios.get(data[i].pokemon.url);
+    const updatedData = await Promise.all(
+      data.map(async (item: any) => {
+        const requestdetail = await axios.get(item.pokemon.url);
 
-      data[i].name = requestdetail.data.name;
-      data[i].image =
-        requestdetail.data.sprites.other.dream_world.front_default;
-      data[i].types = requestdetail.data.types;
-      data[i].abilities = requestdetail.data.abilities;
-      data[i].stats = requestdetail.data.stats;
-      data[i].held_items = requestdetail.data.id;
-    }
+        return {
+          ...item,
+          name: requestdetail.data.name,
+          image: requestdetail.data.sprites.other.dream_world.front_default,
+          types: requestdetail.data.types,
+          abilities: requestdetail.data.abilities,
+          stats: requestdetail.data.stats,
+          held_items: requestdetail.data.id,
+        };
+      })
+    );
 
-    setPokemonList(data);
-    setOriginalList(data);
+    // for (let i = 0; i < data.length; i++) {
+    //   const requestdetail = await axios.get(data[i].pokemon.url);
+
+    //   data[i].name = requestdetail.data.name;
+    //   data[i].image =
+    //     requestdetail.data.sprites.other.dream_world.front_default;
+    //   data[i].types = requestdetail.data.types;
+    //   data[i].abilities = requestdetail.data.abilities;
+    //   data[i].stats = requestdetail.data.stats;
+    //   data[i].held_items = requestdetail.data.id;
+    // }
+    setPokemonList(updatedData);
+    setOriginalList(updatedData);
     setIsLoading(false);
   };
 
@@ -90,22 +101,35 @@ function Pokedex() {
       );
       const data = response.data.results;
 
-      for (let i = 0; i < data.length; i++) {
-        const requestdetail = await axios.get(data[i].url);
+      // for (let i = 0; i < data.length; i++) {
+      //   const requestdetail = await axios.get(data[i].url);
 
-        data[i].name = requestdetail.data.name;
-        data[i].image =
-          requestdetail.data.sprites.other.dream_world.front_default;
-        data[i].types = requestdetail.data.types;
-        data[i].abilities = requestdetail.data.abilities;
-        data[i].stats = requestdetail.data.stats;
-        data[i].held_items = requestdetail.data.id;
-      }
-      response.data.results.map((result: Pokemon) =>
-        console.log("result", result)
+      //   data[i].name = requestdetail.data.name;
+      //   data[i].image =
+      //     requestdetail.data.sprites.other.dream_world.front_default;
+      //   data[i].types = requestdetail.data.types;
+      //   data[i].abilities = requestdetail.data.abilities;
+      //   data[i].stats = requestdetail.data.stats;
+      //   data[i].held_items = requestdetail.data.id;
+      // }
+      const updatedData = await Promise.all(
+        data.map(async (item: any) => {
+          const requestdetail = await axios.get(item.url);
+
+          return {
+            ...item,
+            name: requestdetail.data.name,
+            image: requestdetail.data.sprites.other.dream_world.front_default,
+            types: requestdetail.data.types,
+            abilities: requestdetail.data.abilities,
+            stats: requestdetail.data.stats,
+            held_items: requestdetail.data.id,
+          };
+        })
       );
-      setPokemonList(data);
-      setOriginalList(data);
+
+      setPokemonList(updatedData);
+      setOriginalList(updatedData);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -115,7 +139,6 @@ function Pokedex() {
   };
 
   function getSelectedType(type: string) {
-    console.log("tipo recibido", type);
     if (type === "all") {
       fetchPokemonData(10);
     } else {
@@ -142,24 +165,7 @@ function Pokedex() {
       <br />
       <Grid item xs={12} className="centered-grid">
         {isLoading ? (
-          <SkeletonLoading/>
-       
-          // <>
-          //   <Grid item xs={12} className="centered-grid">
-          //     <Grid container spacing={4}>
-          //       <Grid item xs={12}>
-          //         <center>
-          //           <h1> Cargando...</h1>
-          //         </center>
-          //       </Grid>
-          //       <Grid item xs={12}>
-          //         <center>
-          //           <CircularProgress size={80} />
-          //         </center>
-          //       </Grid>
-          //     </Grid>
-          //   </Grid>
-          // </>
+          <SkeletonLoading />
         ) : (
           <Grid container spacing={3}>
             {pokemonList.map((pokemon, index) => (
