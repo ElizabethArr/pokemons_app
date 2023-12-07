@@ -20,7 +20,7 @@ function SkeletonLoading(props: { loading?: boolean }) {
         <Box sx={{ margin: 1 }}></Box>
       </Box>
       {loading ? (
-        <Skeleton variant="rectangular" width="80%" height={385}>
+        <Skeleton variant="rectangular" width="80%" height={210}>
           <div style={{ paddingTop: "57%" }} />
           <Box sx={{ width: "100%" }}>
             {loading ? (
@@ -42,32 +42,223 @@ function SkeletonLoading(props: { loading?: boolean }) {
 export default function SkeletonChildren() {
   return (
     <Grid container spacing={3} alignItems="center">
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
-      </Grid>
-      <Grid item xs={4}>
-        <SkeletonLoading loading />
+      <Grid container>
+        <Grid item xs={4}>
+          <SkeletonLoading loading />
+          <br />
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+
+          <Grid item xs={10} style={{ textAlign: "center" }}>
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{ marginBottom: 3, display: "inline-block" }}
+            />
+
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{
+                marginBottom: 3,
+                display: "inline-block",
+                marginLeft: "10px",
+              }}
+            />
+          </Grid>
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <SkeletonLoading loading />
+          <br />
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+
+          <Grid item xs={10} style={{ textAlign: "center" }}>
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{ marginBottom: 3, display: "inline-block" }}
+            />
+
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{
+                marginBottom: 3,
+                display: "inline-block",
+                marginLeft: "10px",
+              }}
+            />
+          </Grid>
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <SkeletonLoading loading />
+          <br />
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+
+          <Grid item xs={10} style={{ textAlign: "center" }}>
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{ marginBottom: 3, display: "inline-block" }}
+            />
+
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{
+                marginBottom: 3,
+                display: "inline-block",
+                marginLeft: "10px",
+              }}
+            />
+          </Grid>
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <SkeletonLoading loading />
+          <br />
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+
+          <Grid item xs={10} style={{ textAlign: "center" }}>
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{ marginBottom: 3, display: "inline-block" }}
+            />
+
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{
+                marginBottom: 3,
+                display: "inline-block",
+                marginLeft: "10px",
+              }}
+            />
+          </Grid>
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <SkeletonLoading loading />
+          <br />
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+
+          <Grid item xs={10} style={{ textAlign: "center" }}>
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{ marginBottom: 3, display: "inline-block" }}
+            />
+
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{
+                marginBottom: 3,
+                display: "inline-block",
+                marginLeft: "10px",
+              }}
+            />
+          </Grid>
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <SkeletonLoading loading />
+          <br />
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+
+          <Grid item xs={10} style={{ textAlign: "center" }}>
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{ marginBottom: 3, display: "inline-block" }}
+            />
+
+            <Skeleton
+              animation="wave"
+              height={40}
+              width="40%"
+              style={{
+                marginBottom: 3,
+                display: "inline-block",
+                marginLeft: "10px",
+              }}
+            />
+          </Grid>
+          <Skeleton
+            animation="wave"
+            height={30}
+            width="80%"
+            style={{ marginBottom: 6 }}
+          />
+        </Grid>
       </Grid>
     </Grid>
   );
