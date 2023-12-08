@@ -68,7 +68,7 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
                 right: 6,
               }}
             >
-              <CloseIcon style={{ fontSize: "25px", color: "black" }} />
+              <CloseIcon style={{ fontSize: "40px", color: "blue" }} />
             </Button>
           </Grid>
 
