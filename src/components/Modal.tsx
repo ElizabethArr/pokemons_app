@@ -55,7 +55,6 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
             marginTop: "0.2%",
             width: "300px",
             height: "510px",
-            
           }}
         >
           <Grid item xs={12}>
@@ -139,16 +138,6 @@ export default function MyModal({ pokemon }: { pokemon: Pokemon }) {
                   ))}
                 </TableBody>
               </Grid>
-              {/* </div> */}
-
-              {/* <div className="stats">
-              {pokemon.stats.map((item, i) => (
-                <section>
-                  <span key={i}>{item.stat.name}</span>
-                  <span className="puntos">{item.base_stat}</span>
-                </section>
-              ))}
-            </div>  */}
             </Typography>
           </Grid>
         </Box>
