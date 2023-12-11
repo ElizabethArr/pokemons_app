@@ -7,6 +7,7 @@ import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { PokemonCard } from "./PokemonCard";
 import SkeletonLoading from "./SkeletonLoading";
+import NewHook from './NewHook';
 
 export interface Pokemon {
   name: string;
@@ -50,10 +51,12 @@ function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [customState, setCustomState] = useState('10');
+
 
   useEffect(() => {
-    fetchPokemonData(10);
-  }, []);
+    fetchPokemonData(parseInt(customState));
+  }, [customState]);
 
   const fetchPokemonByType = async (type: string) => {
     setIsLoading(true);
