@@ -2,12 +2,12 @@ import "./styles.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
-import { Container, Grid, } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { PokemonCard } from "./PokemonCard";
 import SkeletonLoading from "./SkeletonLoading";
-import NewHook from './NewHook';
+import NewHook from "./NewHook";
 
 export interface Pokemon {
   name: string;
@@ -53,9 +53,8 @@ function Pokedex() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [customState, setCustomState] = useState(10);
 
-
   useEffect(() => {
-    fetchPokemonData(parseInt(customState.toString(),10));
+    fetchPokemonData(parseInt(customState.toString(), 10));
   }, [customState]);
 
   const fetchPokemonByType = async (type: string) => {
