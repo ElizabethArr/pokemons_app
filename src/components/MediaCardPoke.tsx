@@ -51,11 +51,11 @@ function Pokedex() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [originalList, setOriginalList] = useState<Pokemon[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [customState, setCustomState] = useState('10');
+  const [customState, setCustomState] = useState(10);
 
 
   useEffect(() => {
-    fetchPokemonData(parseInt(customState));
+    fetchPokemonData(parseInt(customState.toString(),10));
   }, [customState]);
 
   const fetchPokemonByType = async (type: string) => {

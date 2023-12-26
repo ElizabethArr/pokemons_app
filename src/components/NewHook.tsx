@@ -1,13 +1,10 @@
-// useCustomHook.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-const NewHook = (initialValue:any) => {
+const NewHook = (initialValue: any) => {
   const [customState, setCustomState] = useState(parseInt(initialValue));
 
   useEffect(() => {
-    
-    console.log('El estado personalizado se ha actualizado:', customState);
-    
+    console.log("El estado personalizado se ha actualizado:", customState);
   }, [customState]);
 
   return [customState, setCustomState];
