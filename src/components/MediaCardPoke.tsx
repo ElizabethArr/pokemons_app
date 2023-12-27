@@ -7,7 +7,7 @@ import { TypeSelect } from "./TypeSelect";
 import { NumberSelect } from "./NumberSelect";
 import { PokemonCard } from "./PokemonCard";
 import SkeletonLoading from "./SkeletonLoading";
-import NewHook from "./NewHook";
+import CustomState from "./CustomState";
 
 export interface Pokemon {
   name: string;

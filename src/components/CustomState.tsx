@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const NewHook = (initialValue: number) => {
+const useCustomState = (initialValue: number) => {
   const [customState, setCustomState] = useState(initialValue);
 
   useEffect(() => {
@@ -10,4 +10,5 @@ const NewHook = (initialValue: number) => {
   return [customState, setCustomState];
 };
 
-export default NewHook;
+export default useCustomState;
+
